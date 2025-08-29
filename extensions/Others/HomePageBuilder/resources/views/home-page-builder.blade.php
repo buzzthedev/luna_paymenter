@@ -24,14 +24,14 @@
             <button type="button" @click="tab = 'preview'" :class="tab === 'preview' ? 'bg-white dark:bg-gray-900 text-gray-900 dark:text-white' : 'text-gray-700 dark:text-gray-300'" class="w-1/2 py-2 rounded-md font-medium text-center transition-colors duration-200">Preview</button>
         </div>
         <div x-show="tab === 'settings'" x-cloak x-transition.opacity.scale.duration.200ms class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
-            <x-filament-panels::form wire:submit="save">
+            <x-filament-schemas::form wire:submit="save">
                 {{ $this->form }}
                 <div class="mt-6">
                     <button style="background: #60A5FA" type="submit" class="w-full hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200">
                         Save Configuration
                     </button>
                 </div>
-            </x-filament-panels::form>
+            </x-filament-schemas::form>
         </div>
 
         <div x-show="tab === 'preview'" x-cloak x-transition.opacity.scale.duration.200ms class="mt-6 bg-gray-50 dark:bg-gray-900 rounded-lg p-6 border border-gray-200 dark:border-gray-700 min-h-screen flex flex-col">
