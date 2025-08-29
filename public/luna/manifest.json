@@ -1,0 +1,13 @@
+{
+  "themes/luna/css/app.css": {
+    "file": "assets/app-CMldE0k1.css",
+    "src": "themes/luna/css/app.css",
+    "isEntry": true
+  },
+  "themes/luna/js/app.js": {
+    "file": "assets/app-rZxx_yNx.js",
+    "name": "app",
+    "src": "themes/luna/js/app.js",
+    "isEntry": true
+  }
+}

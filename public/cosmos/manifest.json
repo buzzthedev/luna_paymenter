@@ -1,0 +1,13 @@
+{
+  "themes/cosmos/css/app.css": {
+    "file": "assets/app-Dvf0Mt9I.css",
+    "src": "themes/cosmos/css/app.css",
+    "isEntry": true
+  },
+  "themes/cosmos/js/app.js": {
+    "file": "assets/app-rZxx_yNx.js",
+    "name": "app",
+    "src": "themes/cosmos/js/app.js",
+    "isEntry": true
+  }
+}
