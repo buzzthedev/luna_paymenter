@@ -25,11 +25,11 @@ class CustomPropertyResource extends Resource
 {
     protected static ?string $model = CustomProperty::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-list-settings-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-list-settings-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-list-settings-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-list-settings-fill';
 
     public static function form(Schema $schema): Schema
     {

@@ -26,11 +26,11 @@ class AnnouncementResource extends Resource
 {
     protected static ?string $model = Announcement::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-megaphone-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-megaphone-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-megaphone-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-megaphone-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Administration';
 
     public static function form(Schema $schema): Schema
     {

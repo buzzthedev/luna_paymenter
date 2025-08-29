@@ -24,9 +24,9 @@ class ApiResource extends Resource
 {
     protected static ?string $model = ApiKey::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-key-2-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-key-2-line';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Other';
+    protected static string | \UnitEnum | null $navigationGroup = 'Other';
 
     public static function form(Schema $schema): Schema
     {

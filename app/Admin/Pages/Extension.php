@@ -2,6 +2,7 @@
 
 namespace App\Admin\Pages;
 
+use Exception;
 use App\Admin\Clusters\Extensions;
 use App\Admin\Resources\ExtensionResource;
 use App\Helpers\ExtensionHelper;
@@ -26,9 +27,9 @@ class Extension extends Page implements HasActions, HasTable
     // Cluster
     protected static ?string $cluster = Extensions::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-download-2-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-download-2-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-download-2-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-download-2-fill';
 
     // Label for the navigation item
     protected static ?string $navigationLabel = 'Available Extensions';
@@ -91,7 +92,7 @@ class Extension extends Page implements HasActions, HasTable
                     ->action(function ($data, UploadExtensionService $service) {
                         try {
                             $service->handle(storage_path('app/' . $data['file']));
-                        } catch (\Exception $e) {
+                        } catch (Exception $e) {
                             // Handle the exception, e.g., log it or show an error message
                             Notification::make()
                                 ->title('Failed to upload extension')

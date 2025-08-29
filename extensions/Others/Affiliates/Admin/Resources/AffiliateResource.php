@@ -22,11 +22,11 @@ class AffiliateResource extends Resource
 {
     protected static ?string $model = Affiliate::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-hand-coin-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-hand-coin-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-hand-coin-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-hand-coin-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Administration';
 
     public static function form(Schema $schema): Schema
     {

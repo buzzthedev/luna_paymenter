@@ -43,10 +43,36 @@ class HomePageBuilder extends Extension
 
                         $type = $item['type'];
                         $variation = $item['variation'] ?? null;
+                        $rawContent = $item['content'] ?? [];
+                        $contentForView = $rawContent;
+                        if ($type === 'hero' && isset($rawContent['hero_data']) && is_array($rawContent['hero_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['hero_data']);
+                        }
+                        if ($type === 'features' && isset($rawContent['features_data']) && is_array($rawContent['features_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['features_data']);
+                        }
+                        if ($type === 'reviews' && isset($rawContent['reviews_data']) && is_array($rawContent['reviews_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['reviews_data']);
+                            if (isset($rawContent['reviews_data']['reviews']) && is_array($rawContent['reviews_data']['reviews'])) {
+                                $contentForView['reviews'] = $rawContent['reviews_data']['reviews'];
+                            } elseif (!isset($contentForView['reviews'])) {
+                                $contentForView['reviews'] = [];
+                            }
+                        }
+                        if ($type === 'pricing' && isset($rawContent['pricing_data']) && is_array($rawContent['pricing_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['pricing_data']);
+                        }
+                        if ($type === 'faq' && isset($rawContent['faq_data']) && is_array($rawContent['faq_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['faq_data']);
+                        }
+                        if ($type === 'pricing' && isset($rawContent['pricing_data']) && is_array($rawContent['pricing_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['pricing_data']);
+                        }
+
                         $data = [
                             'category' => $category,
                             'products' => $products,
-                            'content' => $item['content'] ?? [],
+                            'content' => $contentForView,
                         ];
 
                         $sections[] = [
@@ -117,10 +143,36 @@ class HomePageBuilder extends Extension
                         
                         $type = $item['type'];
                         $variation = $item['variation'] ?? null;
+                        $rawContent = $item['content'] ?? [];
+                        $contentForView = $rawContent;
+                        if ($type === 'hero' && isset($rawContent['hero_data']) && is_array($rawContent['hero_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['hero_data']);
+                        }
+                        if ($type === 'features' && isset($rawContent['features_data']) && is_array($rawContent['features_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['features_data']);
+                        }
+                        if ($type === 'reviews' && isset($rawContent['reviews_data']) && is_array($rawContent['reviews_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['reviews_data']);
+                            if (isset($rawContent['reviews_data']['reviews']) && is_array($rawContent['reviews_data']['reviews'])) {
+                                $contentForView['reviews'] = $rawContent['reviews_data']['reviews'];
+                            } elseif (!isset($contentForView['reviews'])) {
+                                $contentForView['reviews'] = [];
+                            }
+                        }
+                        if ($type === 'pricing' && isset($rawContent['pricing_data']) && is_array($rawContent['pricing_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['pricing_data']);
+                        }
+                        if ($type === 'faq' && isset($rawContent['faq_data']) && is_array($rawContent['faq_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['faq_data']);
+                        }
+                        if ($type === 'pricing' && isset($rawContent['pricing_data']) && is_array($rawContent['pricing_data'])) {
+                            $contentForView = array_merge($contentForView, $rawContent['pricing_data']);
+                        }
+
                         $data = [
                             'category' => $category,
                             'products' => $products,
-                            'content' => $item['content'] ?? [],
+                            'content' => $contentForView,
                         ];
 
                         $sections[] = [

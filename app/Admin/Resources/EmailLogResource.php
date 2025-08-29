@@ -19,11 +19,11 @@ class EmailLogResource extends Resource
 {
     protected static ?string $model = EmailLog::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-mail-send-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-mail-send-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-mail-send-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-mail-send-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Other';
+    protected static string | \UnitEnum | null $navigationGroup = 'Other';
 
     public static function infolist(Schema $schema): Schema
     {

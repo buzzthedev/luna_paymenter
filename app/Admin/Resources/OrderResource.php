@@ -34,11 +34,11 @@ class OrderResource extends Resource
 {
     protected static ?string $model = Order::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-shopping-bag-4-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-shopping-bag-4-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-shopping-bag-4-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-shopping-bag-4-fill';
 
-    public static string|\UnitEnum|null $navigationGroup = 'Administration';
+    public static string | \UnitEnum | null $navigationGroup = 'Administration';
 
     public static function form(Schema $schema): Schema
     {

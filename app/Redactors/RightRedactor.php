@@ -2,9 +2,11 @@
 
 namespace App\Redactors;
 
+use OwenIt\Auditing\Contracts\AttributeRedactor;
+use Exception;
 use Crypt;
 
-class RightRedactor implements \OwenIt\Auditing\Contracts\AttributeRedactor
+class RightRedactor implements AttributeRedactor
 {
     /**
      * {@inheritdoc}
@@ -14,7 +16,7 @@ class RightRedactor implements \OwenIt\Auditing\Contracts\AttributeRedactor
         try {
             // Try to decrypt value
             $value = Crypt::decryptString($value);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
         }
 
         $total = strlen($value);

@@ -25,9 +25,9 @@ class ExtensionResource extends Resource
 {
     protected static ?string $model = Extension::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-puzzle-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-puzzle-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-puzzle-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-puzzle-fill';
 
     protected static ?string $cluster = Extensions::class;
 

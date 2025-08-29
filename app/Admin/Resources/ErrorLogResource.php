@@ -18,11 +18,11 @@ class ErrorLogResource extends Resource
 {
     protected static ?string $model = DebugLog::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-bug-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-bug-line';
 
     protected static ?string $modelLabel = 'Error log';
 
-    public static string|\UnitEnum|null $navigationGroup = 'Debug';
+    public static string | \UnitEnum | null $navigationGroup = 'Debug';
 
     // Edit query to only include with type 'http'
     public static function getEloquentQuery(): Builder

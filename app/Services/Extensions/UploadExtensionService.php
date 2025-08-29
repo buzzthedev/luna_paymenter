@@ -2,6 +2,8 @@
 
 namespace App\Services\Extensions;
 
+use Exception;
+use ZipArchive;
 use App\Attributes\ExtensionMeta;
 use App\Classes\Extension\Extension;
 use App\Classes\Extension\Gateway;
@@ -22,17 +24,17 @@ class UploadExtensionService
     {
         // Validate the file type and size
         if (!file_exists($filePath) || !is_readable($filePath)) {
-            throw new \Exception('File does not exist or is not readable.');
+            throw new Exception('File does not exist or is not readable.');
         }
         if (pathinfo($filePath, PATHINFO_EXTENSION) !== 'zip') {
-            throw new \Exception('Invalid file type. Only zip files are allowed.');
+            throw new Exception('Invalid file type. Only zip files are allowed.');
         }
 
         // Extract the zip file
         $extractPath = storage_path('app/extensions/' . uniqid());
 
         if (!is_dir($extractPath) && !mkdir($extractPath, 0755, true)) {
-            throw new \Exception('Failed to create extraction directory.');
+            throw new Exception('Failed to create extraction directory.');
         }
 
         $this->unzip($filePath, $extractPath);
@@ -71,7 +73,7 @@ class UploadExtensionService
         }
 
         if (!rename($path, $destinationPath)) {
-            throw new \Exception('Failed to move the extension files to the destination.');
+            throw new Exception('Failed to move the extension files to the destination.');
         }
 
         // Remove the extracted files
@@ -114,7 +116,7 @@ class UploadExtensionService
             }
         }
         if (!$type['class'] || !$type['type']) {
-            throw new \Exception('No valid extension class found in the provided path.');
+            throw new Exception('No valid extension class found in the provided path.');
         }
 
         return $type;
@@ -123,7 +125,7 @@ class UploadExtensionService
     private function validateExtensionPath(string $path, int $depth = 0): string
     {
         if ($depth > 1) {
-            throw new \Exception('Maximum depth reached while validating extension path.');
+            throw new Exception('Maximum depth reached while validating extension path.');
         }
         // Check if the path contains a valid extension structure
         $files = glob($path . '/*.php');
@@ -148,7 +150,7 @@ class UploadExtensionService
                 }
             }
 
-            throw new \Exception('No valid extension files found in the provided path.');
+            throw new Exception('No valid extension files found in the provided path.');
         }
 
         // Return the path if it contains valid PHP files
@@ -157,7 +159,7 @@ class UploadExtensionService
 
     private function unzip(string $filePath, string $extractPath)
     {
-        $zip = new \ZipArchive;
+        $zip = new ZipArchive;
         if ($zip->open($filePath) === true) {
             $zip->extractTo($extractPath);
             $zip->close();
@@ -165,7 +167,7 @@ class UploadExtensionService
             // Remove the zip file after extraction
             File::delete($filePath);
         } else {
-            throw new \Exception('Failed to open the zip file.');
+            throw new Exception('Failed to open the zip file.');
         }
     }
 }

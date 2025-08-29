@@ -20,11 +20,11 @@ class CurrencyResource extends Resource
 {
     protected static ?string $model = Currency::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-money-dollar-circle-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-money-dollar-circle-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-money-dollar-circle-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-money-dollar-circle-fill';
 
     public static function form(Schema $schema): Schema
     {

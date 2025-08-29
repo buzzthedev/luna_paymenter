@@ -37,9 +37,9 @@ class InvoiceResource extends Resource
 
     protected static ?string $cluster = InvoiceCluster::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-receipt-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-receipt-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-receipt-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-receipt-fill';
 
     public static function getNavigationBadge(): ?string
     {

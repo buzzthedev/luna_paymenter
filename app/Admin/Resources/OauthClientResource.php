@@ -21,11 +21,11 @@ class OauthClientResource extends Resource
 {
     protected static ?string $model = OauthClient::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-lock-2-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-lock-2-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-lock-2-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-lock-2-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Other';
+    protected static string | \UnitEnum | null $navigationGroup = 'Other';
 
     public static function form(Schema $schema): Schema
     {

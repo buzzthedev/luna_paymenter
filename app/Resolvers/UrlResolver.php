@@ -2,15 +2,17 @@
 
 namespace App\Resolvers;
 
+use OwenIt\Auditing\Contracts\Resolver;
+use OwenIt\Auditing\Contracts\Auditable;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Request;
 
-class UrlResolver implements \OwenIt\Auditing\Contracts\Resolver
+class UrlResolver implements Resolver
 {
     /**
      * {@inheritdoc}
      */
-    public static function resolve(\OwenIt\Auditing\Contracts\Auditable $auditable): string
+    public static function resolve(Auditable $auditable): string
     {
         if (App::runningInConsole()) {
             return 'console';

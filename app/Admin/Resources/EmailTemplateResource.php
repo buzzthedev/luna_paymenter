@@ -21,11 +21,11 @@ class EmailTemplateResource extends Resource
 {
     protected static ?string $model = EmailTemplate::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-mail-settings-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-mail-settings-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-mail-settings-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-mail-settings-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Other';
+    protected static string | \UnitEnum | null $navigationGroup = 'Other';
 
     public static function form(Schema $schema): Schema
     {

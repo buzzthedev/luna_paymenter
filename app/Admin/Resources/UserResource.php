@@ -29,11 +29,11 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Administration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-group-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-group-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-group-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-group-fill';
 
     public static function getGloballySearchableAttributes(): array
     {

@@ -22,7 +22,7 @@ class ServiceCancellationResource extends Resource
 {
     protected static ?string $model = ServiceCancellation::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $cluster = Services::class;
 

@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use URL;
 use App\Classes\Synths\PriceSynth;
 use App\Helpers\ExtensionHelper;
 use App\Models\EmailLog;
@@ -82,12 +83,12 @@ class AppServiceProvider extends ServiceProvider
         });
 
         UrlGenerator::macro('alternateHasValidSignature', function (Request $request, $absolute = true, array $ignoreQuery = []) {
-            return \URL::alternateHasCorrectSignature($request, $absolute, $ignoreQuery)
-                && \URL::signatureHasNotExpired($request);
+            return URL::alternateHasCorrectSignature($request, $absolute, $ignoreQuery)
+                && URL::signatureHasNotExpired($request);
         });
 
         Request::macro('hasValidSignature', function ($absolute = true, array $ignoreQuery = []) {
-            return \URL::alternateHasValidSignature($this, $absolute, $ignoreQuery);
+            return URL::alternateHasValidSignature($this, $absolute, $ignoreQuery);
         });
 
         Request::macro('livewireUrl', function () {

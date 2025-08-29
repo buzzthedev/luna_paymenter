@@ -27,11 +27,11 @@ class CategoryResource extends Resource
 {
     protected static ?string $model = Category::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Administration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-folder-6-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-folder-6-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-folder-6-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-folder-6-fill';
 
     protected static ?int $navigationSort = 1;
 

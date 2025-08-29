@@ -19,11 +19,11 @@ class HttpLogResource extends Resource
 {
     protected static ?string $model = DebugLog::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-external-link-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-external-link-line';
 
     protected static ?string $modelLabel = 'HTTP log';
 
-    public static string|\UnitEnum|null $navigationGroup = 'Debug';
+    public static string | \UnitEnum | null $navigationGroup = 'Debug';
 
     // Edit query to only include with type 'http'
     public static function getEloquentQuery(): Builder

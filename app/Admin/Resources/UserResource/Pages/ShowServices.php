@@ -15,7 +15,7 @@ class ShowServices extends ManageRelatedRecords
 
     protected static string $relationship = 'services';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'heroicon-o-shopping-cart';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-shopping-cart';
 
     public static function getNavigationLabel(): string
     {

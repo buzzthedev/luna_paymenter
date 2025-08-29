@@ -21,9 +21,9 @@ class TaxRateResource extends Resource
 {
     protected static ?string $model = TaxRate::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-wallet-3-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-wallet-3-line';
 
     public static function form(Schema $schema): Schema
     {

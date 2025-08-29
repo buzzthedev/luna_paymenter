@@ -18,11 +18,11 @@ class FailedJobResource extends Resource
 {
     protected static ?string $model = FailedJob::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-error-warning-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-error-warning-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-error-warning-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-error-warning-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Other';
+    protected static string | \UnitEnum | null $navigationGroup = 'Other';
 
     public static function getNavigationBadge(): ?string
     {

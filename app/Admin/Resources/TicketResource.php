@@ -27,11 +27,11 @@ class TicketResource extends Resource
 {
     protected static ?string $model = Ticket::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-customer-service-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-customer-service-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-customer-service-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-customer-service-fill';
 
-    public static string|\UnitEnum|null $navigationGroup = 'Administration';
+    public static string | \UnitEnum | null $navigationGroup = 'Administration';
 
     public static function getNavigationBadge(): ?string
     {

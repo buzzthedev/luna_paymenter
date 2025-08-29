@@ -22,7 +22,7 @@ class ShowCredits extends ManageRelatedRecords
 
     protected static string $relationship = 'credits';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-bill-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-bill-line';
 
     public static function getNavigationLabel(): string
     {

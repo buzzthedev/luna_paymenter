@@ -41,11 +41,11 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Administration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Administration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-instance-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-instance-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-instance-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-instance-fill';
 
     protected static ?string $recordTitleAttribute = 'name';
 

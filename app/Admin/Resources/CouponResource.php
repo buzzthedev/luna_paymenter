@@ -24,11 +24,11 @@ class CouponResource extends Resource
 {
     protected static ?string $model = Coupon::class;
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-coupon-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-coupon-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-coupon-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-coupon-fill';
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
     public static function form(Schema $schema): Schema
     {

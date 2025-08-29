@@ -24,11 +24,11 @@ class ConfigOptionResource extends Resource
 {
     protected static ?string $model = ConfigOption::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Configuration';
+    protected static string | \UnitEnum | null $navigationGroup = 'Configuration';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-equalizer-2-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-equalizer-2-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-equalizer-2-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-equalizer-2-fill';
 
     public static function form(Schema $schema): Schema
     {

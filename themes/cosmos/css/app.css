@@ -81,12 +81,12 @@ color utility to any element that depends on these defaults.
   scrollbar-color: #1F1F1F #121212;
 }
 
-.card-gradient {
+/* .card-gradient {
   background: radial-gradient(circle, hsl(var(--color-background-gradient-start)), hsl(var(--color-background-gradient-end)));
   border: 1px solid hsl(var(--color-neutral));
   box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
   border-radius: 20px;
-}
+} */
 
 .page {
   position: relative;

@@ -24,13 +24,14 @@ use App\Models\Category;
 use UnitEnum;
 use BackedEnum;
 use Filament\Support\Icons\Heroicon;
+use Illuminate\Support\Facades\Validator;
 
 class HomePageBuilder extends Page implements HasForms
 {
     use InteractsWithForms;
 
-  protected static string | BackedEnum | null $navigationIcon = Heroicon::OutlinedSquares2x2;
-    protected static string | UnitEnum | null $navigationGroup = 'Extensions';
+  protected static string | \BackedEnum | null $navigationIcon = Heroicon::OutlinedSquares2x2;
+    protected static string | \UnitEnum | null $navigationGroup = 'Extensions';
     protected static ?string $title = 'Homepage Builder';
     protected static ?string $slug = 'homepage-builder';
 
@@ -38,7 +39,7 @@ class HomePageBuilder extends Page implements HasForms
 
     public ?array $data = [];
     public ?array $previewData = [];
-    public string $activeTab = 'preview';
+    public string $activeTab = 'settings';
 
     public function mount(): void
     {
@@ -53,7 +54,7 @@ class HomePageBuilder extends Page implements HasForms
     public function getViewData(): array
     {
         return [
-            'homebuilderView' => $this->generatePreviewHtml(),
+            'homebuilderView' => $this->activeTab === 'preview' ? $this->generatePreviewHtml() : null,
             'colors' => $this->form->getState()
         ];
     }
@@ -215,6 +216,8 @@ class HomePageBuilder extends Page implements HasForms
                                     'hero_data' => [],
                                     'features_data' => [],
                                     'reviews_data' => ['reviews' => []],
+                                    'pricing_data' => ['items' => []],
+                                    'faq_data' => ['items' => [], 'groups' => []],
                                 ]),
                             Select::make('type')
                                 ->label('Section Type')
@@ -229,29 +232,41 @@ class HomePageBuilder extends Page implements HasForms
                                 ->required()
                                 ->native(false)
                                 ->default('hero')
-                                ->live()
+                                ->live(onBlur: true)
                                 ->afterStateUpdated(function ($set, $get, $state) {
-                                    $content = $get('content');
-                                    if (!is_array($content)) {
-                                        $content = [];
-                                    }
-                                    if ($state === 'reviews') {
-                                        if (!array_key_exists('reviews_data', $content) || !is_array($content['reviews_data'])) {
-                                            $content['reviews_data'] = [];
-                                        }
-                                        if (!array_key_exists('reviews', $content['reviews_data']) || !is_array($content['reviews_data']['reviews'])) {
-                                            $content['reviews_data']['reviews'] = [];
-                                        }
-                                    } elseif ($state === 'features') {
-                                        if (!array_key_exists('features_data', $content) || !is_array($content['features_data'])) {
-                                            $content['features_data'] = [];
-                                        }
-                                    } elseif ($state === 'hero') {
-                                        if (!array_key_exists('hero_data', $content) || !is_array($content['hero_data'])) {
-                                            $content['hero_data'] = [];
-                                        }
-                                    }
-                                    $set('content', $content);
+                                    $defaults = [
+                                        'hero' => [
+                                            'hero_data' => [],
+                                        ],
+                                        'features' => [
+                                            'features_data' => [],
+                                        ],
+                                        'reviews' => [
+                                            'reviews_data' => [
+                                                'section_title' => null,
+                                                'section_description' => null,
+                                                'reviews' => [],
+                                            ],
+                                        ],
+                                        'pricing' => [
+                                            'pricing_data' => [
+                                                'section_title' => null,
+                                                'section_description' => null,
+                                                'items' => [],
+                                            ],
+                                        ],
+                                        'products' => [],
+                                        'faq' => [
+                                            'faq_data' => [
+                                                'section_title' => null,
+                                                'section_description' => null,
+                                                'items' => [],
+                                                'groups' => [],
+                                            ],
+                                        ],
+                                    ];
+                                    $set('content', $defaults[$state] ?? []);
+                                    $set('variation', '1');
                                 }),
                             Select::make('variation')
                                 ->label('Variation')
@@ -336,12 +351,12 @@ class HomePageBuilder extends Page implements HasForms
                                         ->schema([
                                             TextInput::make('section_title')
                                                 ->label('Section title')
-                                                ->visible(fn ($get) => $get('type') === 'features')
+                                                ->placeholder('Everything You Need')
                                                 ->columnSpan(1),
                                             Textarea::make('section_description')
                                                 ->label('Section description')
                                                 ->rows(3)
-                                                ->visible(fn ($get) => $get('type') === 'features')
+                                                ->placeholder('Powerful features designed to help your business succeed online')
                                                 ->columnSpan(1),
 
                                             Repeater::make('items')
@@ -432,35 +447,197 @@ class HomePageBuilder extends Page implements HasForms
                                 ->schema([
                                     TextInput::make('content.reviews_data.section_title')
                                         ->label('Section title')
+                                        ->live(onBlur: true)
+                                        ->partiallyRenderAfterStateUpdated()
                                         ->columnSpan(1),
                                     Textarea::make('content.reviews_data.section_description')
                                         ->label('Section description')
                                         ->rows(3)
+                                        ->live(onBlur: true)
+                                        ->partiallyRenderAfterStateUpdated()
                                         ->columnSpan(1),
 
                                     Repeater::make('content.reviews_data.reviews')
                                         ->label('Reviews')
                                         ->addActionLabel('Add review')
-                                        ->afterStateHydrated(function ($get, $set, $state) {
-                                            if (!is_array($state)) {
-                                                $set('content.reviews_data.reviews', []);
-                                            }
-                                        })
                                         ->schema([
-                                            Textarea::make('quote')->label('Quote')->rows(3)->required(),
-                                            TextInput::make('name')->label('Name')->required(),
-                                            TextInput::make('title')->label('Title / Role')->required(),
-                                            TextInput::make('initials')->label('Initials (2 letters)')->maxLength(4),
+                                            Textarea::make('quote')
+                                                ->label('Quote')
+                                                ->rows(3)
+                                                ->required()
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated(),
+                                            TextInput::make('name')
+                                                ->label('Name')
+                                                ->required()
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated(),
+                                            TextInput::make('title')
+                                                ->label('Title / Role')
+                                                ->required()
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated(),
+                                            TextInput::make('initials')
+                                                ->label('Initials (2 letters)')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated(),
+                                            TextInput::make('rating')
+                                                ->label('Rating (e.g. 5.0)')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated(),
                                         ])
-                                        ->reorderable(false)
+                                        ->collapsed()
                                         ->collapsible()
+                                        ->maxItems(fn ($get) => match ($get('variation')) {
+                                            '1' => 3,
+                                            '2' => 2,
+                                            '3' => 3,
+                                            '4' => 2,
+                                            '5' => 4,
+                                            default => null,
+                                        })
+                                        ->reorderable(false)
                                         ->default([])
-                                        ->defaultItems(0)
+                                        ->columnSpanFull(),
+
+                                    Fieldset::make('Alternating Layout Aside (Variation 4)')
+                                        ->schema([
+                                            TextInput::make('content.reviews_data.aside_1_title')->label('Aside 1 title'),
+                                            Textarea::make('content.reviews_data.aside_1_text')->label('Aside 1 text')->rows(3),
+                                            TextInput::make('content.reviews_data.aside_2_title')->label('Aside 2 title'),
+                                            Textarea::make('content.reviews_data.aside_2_text')->label('Aside 2 text')->rows(3),
+                                        ])
+                                        ->columns(2)
+                                        ->visible(fn ($get) => $get('variation') === '4')
+                                        ->columnSpanFull(),
+
+                                    Fieldset::make('Metrics (Variation 5)')
+                                        ->schema([
+                                            TextInput::make('content.reviews_data.metrics.average_rating')->label('Average rating label'),
+                                            TextInput::make('content.reviews_data.metrics.total_reviews')->label('Total reviews label'),
+                                            TextInput::make('content.reviews_data.metrics.recommend_percent')->label('Recommend percent label'),
+                                        ])
+                                        ->columns(3)
+                                        ->visible(fn ($get) => $get('variation') === '5')
                                         ->columnSpanFull(),
                                 ])
                                 ->columns(2)
                                 ->columnSpanFull()
                                 ->hidden(fn ($get) => $get('type') !== 'reviews'),
+
+                            Fieldset::make('Pricing Content')
+                                ->schema([
+                                    Group::make()
+                                        ->statePath('content.pricing_data')
+                                        ->columns(2)
+                                        ->columnSpanFull()
+                                        ->schema([
+                                            TextInput::make('section_title')
+                                                ->label('Section title')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+                                            Textarea::make('section_description')
+                                                ->label('Section description')
+                                                ->rows(3)
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+
+                                            Repeater::make('items')
+                                                ->label('Plans')
+                                                ->schema([
+                                                    TextInput::make('title')->label('Plan title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    TextInput::make('price')->label('Price (e.g. $19)')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    TextInput::make('period')->label('Billing period (e.g. /mo)')->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    Repeater::make('features')
+                                                        ->label('Feature list')
+                                                        ->schema([
+                                                            TextInput::make('text')->label('Text')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                        ])
+                                                        ->collapsed()
+                                                        ->collapsible()
+                                                        ->default([])
+                                                        ->columnSpanFull(),
+                                                    TextInput::make('cta_label')->label('Button label')->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    TextInput::make('cta_link')->label('Button link')->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    TextInput::make('badge')->label('Badge text (optional)')->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                ])
+                                                ->collapsed()
+                                                ->collapsible()
+                                                ->maxItems(6)
+                                                ->reorderable(false)
+                                                ->default([])
+                                                ->columnSpanFull(),
+                                        ])
+                                ])
+                                ->columns(2)
+                                ->columnSpanFull()
+                                ->hidden(fn ($get) => $get('type') !== 'pricing'),
+
+                            Fieldset::make('FAQ Content')
+                                ->schema([
+                                    Group::make()
+                                        ->statePath('content.faq_data')
+                                        ->columns(2)
+                                        ->columnSpanFull()
+                                        ->schema([
+                                            TextInput::make('section_title')
+                                                ->label('Section title')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+                                            Textarea::make('section_description')
+                                                ->label('Section description')
+                                                ->rows(3)
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+
+                                            Repeater::make('items')
+                                                ->label('FAQ items')
+                                                ->schema([
+                                                    TextInput::make('question')->label('Question')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    Textarea::make('answer')->label('Answer')->rows(3)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                ])
+                                                ->visible(fn ($get) => in_array($get('../../variation'), ['1','2','5']))
+                                                ->collapsed()
+                                                ->collapsible()
+                                                ->reorderable(false)
+                                                ->default([])
+                                                ->columnSpanFull(),
+
+                                            Fieldset::make('Categorised FAQs (Variations 3, 4, 6)')
+                                                ->schema([
+                                                    Repeater::make('groups')
+                                                        ->label('Groups')
+                                                        ->schema([
+                                                            TextInput::make('title')->label('Group title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            Repeater::make('items')
+                                                                ->label('Group items')
+                                                                ->schema([
+                                                                    TextInput::make('question')->label('Question')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                                    Textarea::make('answer')->label('Answer')->rows(3)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                                ])
+                                                                ->collapsed()
+                                                                ->collapsible()
+                                                                ->reorderable(false)
+                                                                ->default([])
+                                                                ->columnSpanFull(),
+                                                        ])
+                                                        ->collapsed()
+                                                        ->collapsible()
+                                                        ->reorderable(false)
+                                                        ->default([])
+                                                        ->columnSpanFull(),
+                                                ])
+                                                ->visible(fn ($get) => in_array($get('../../variation'), ['3','4','6']))
+                                                ->columns(1),
+                                        ])
+                                ])
+                                ->columns(2)
+                                ->columnSpanFull()
+                                ->hidden(fn ($get) => $get('type') !== 'faq'),
                         ])
                         ->default([
                             ['type' => 'hero', 'variation' => '1', 'content' => []]
@@ -610,6 +787,45 @@ class HomePageBuilder extends Page implements HasForms
     public function save(): void
     {
         $data = $this->form->getState();
+
+        $rules = [];
+        $messages = [];
+        $sections = $data['sections'] ?? [];
+        foreach ((array) $sections as $i => $section) {
+            if (($section['type'] ?? null) === 'reviews') {
+                $base = "sections.$i.content.reviews_data";
+                $rules[$base . '.section_title'] = ['required', 'string'];
+                $rules[$base . '.section_description'] = ['required', 'string'];
+                $rules[$base . '.reviews'] = ['array'];
+                $rules[$base . '.reviews.*.quote'] = ['required', 'string'];
+                $rules[$base . '.reviews.*.name'] = ['required', 'string'];
+                $rules[$base . '.reviews.*.title'] = ['required', 'string'];
+
+                $messages[$base . '.section_title.required'] = 'Reviews section title is required for section #' . ($i + 1) . '.';
+                $messages[$base . '.section_description.required'] = 'Reviews section description is required for section #' . ($i + 1) . '.';
+                $messages[$base . '.reviews.*.quote.required'] = 'Each review must have a quote in section #' . ($i + 1) . '.';
+                $messages[$base . '.reviews.*.name.required'] = 'Each review must have a name in section #' . ($i + 1) . '.';
+                $messages[$base . '.reviews.*.title.required'] = 'Each review must have a title/role in section #' . ($i + 1) . '.';
+            }
+        }
+
+        if (!empty($rules)) {
+            $validator = Validator::make($data, $rules, $messages);
+            if ($validator->fails()) {
+                foreach ($validator->errors()->toArray() as $field => $errs) {
+                    foreach ((array) $errs as $err) {
+                        $this->addError($field, $err);
+                    }
+                }
+
+                Notification::make()
+                    ->title('Please fix the highlighted errors before saving')
+                    ->danger()
+                    ->body(collect($validator->errors()->all())->map(fn($m) => "• $m")->implode("\n"))
+                    ->send();
+                return;
+            }
+        }
 
         $ext = ExtensionModel::firstOrCreate(
             ['extension' => 'HomePageBuilder'],

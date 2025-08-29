@@ -28,11 +28,11 @@ class ServerResource extends Resource
 {
     protected static ?string $model = Server::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Extensions';
+    protected static string | \UnitEnum | null $navigationGroup = 'Extensions';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-server-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-server-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-server-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-server-fill';
 
     public static function getGloballySearchableAttributes(): array
     {

@@ -16,9 +16,9 @@ class InvoiceTransactionResource extends Resource
 
     protected static ?string $cluster = InvoiceCluster::class;
 
-    protected static string|BackedEnum|null $navigationIcon = 'ri-wallet-2-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-wallet-2-line';
 
-    protected static string|BackedEnum|null $activeNavigationIcon = 'ri-wallet-2-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-wallet-2-fill';
 
     protected static ?string $recordTitleAttribute = 'transaction_id';
 

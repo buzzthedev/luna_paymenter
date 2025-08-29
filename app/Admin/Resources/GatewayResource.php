@@ -26,11 +26,11 @@ class GatewayResource extends Resource
 {
     protected static ?string $model = Gateway::class;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'Extensions';
+    protected static string | \UnitEnum | null $navigationGroup = 'Extensions';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-secure-payment-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-secure-payment-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-secure-payment-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-secure-payment-fill';
 
     public static function getGloballySearchableAttributes(): array
     {

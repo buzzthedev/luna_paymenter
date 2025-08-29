@@ -7,11 +7,11 @@ use Filament\Clusters\Cluster;
 
 class InvoiceCluster extends Cluster
 {
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-receipt-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-receipt-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-receipt-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-receipt-fill';
 
-    public static string|\UnitEnum|null $navigationGroup = 'Administration';
+    public static string | \UnitEnum | null $navigationGroup = 'Administration';
 
     public static ?string $navigationLabel = 'Invoices';
 

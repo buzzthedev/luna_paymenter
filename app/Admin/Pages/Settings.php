@@ -22,13 +22,13 @@ class Settings extends Page implements HasForms
 {
     use InteractsWithForms;
 
-    protected static string|\UnitEnum|null $navigationGroup = 'System';
+    protected static string | \UnitEnum | null $navigationGroup = 'System';
 
     protected static ?string $title = 'Settings';
 
-    protected static string|\BackedEnum|null $navigationIcon = 'ri-settings-3-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'ri-settings-3-line';
 
-    protected static string|\BackedEnum|null $activeNavigationIcon = 'ri-settings-3-fill';
+    protected static string | \BackedEnum | null $activeNavigationIcon = 'ri-settings-3-fill';
 
     protected string $view = 'admin.pages.settings';
 

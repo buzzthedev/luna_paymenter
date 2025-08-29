@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands\Extension;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -35,7 +36,7 @@ class Upgrade extends Command
         if (method_exists($extensionInstance, 'upgraded')) {
             try {
                 $extensionInstance->upgraded();
-            } catch (\Exception $e) {
+            } catch (Exception $e) {
                 Log::error("Error during upgrade of extension {$this->argument('name')}: " . $e->getMessage());
 
                 return $this->error('An error occurred while upgrading the extension: ' . $e->getMessage());
