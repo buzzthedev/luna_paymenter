@@ -26,14 +26,14 @@
 
 <x-filament::page>
     @vite(['themes/' . config('settings.theme') . '/js/app.js', 'themes/' . config('settings.theme') . '/css/app.css'], config('settings.theme'))
-    <div x-data="{ tab: 'settings' }" class="w-full">
+    <div x-data="{ tab: 'settings' }" x-on:hpb-preview-reload.window="if($refs.previewFrame){ const base = $refs.previewFrame.getAttribute('src').split('?')[0]; $refs.previewFrame.setAttribute('src', base + '?t=' + Date.now()); }" class="w-full">
         <div class="bg-white dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700">
             <div class="mb-6">
-                <div class="inline-flex rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                    <button type="button" @click="tab = 'settings'" class="px-4 py-2 text-sm font-medium focus:outline-none transition-colors duration-200" :class="tab === 'settings' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'">
+                <div class="w-full flex rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                    <button type="button" @click="tab = 'settings'" class="w-1/2 px-4 py-2 text-sm font-medium focus:outline-none transition-colors duration-200" :class="tab === 'settings' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'">
                         Settings
                     </button>
-                    <button type="button" @click="tab = 'preview'" class="px-4 py-2 text-sm font-medium focus:outline-none transition-colors duration-200" :class="tab === 'preview' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'">
+                    <button type="button" @click="tab = 'preview'" class="w-1/2 px-4 py-2 text-sm font-medium focus:outline-none transition-colors duration-200" :class="tab === 'preview' ? 'bg-blue-500 text-white' : 'bg-transparent text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700'">
                         Preview
                     </button>
                 </div>
@@ -52,7 +52,7 @@
 
             <div x-show="tab === 'preview'" x-cloak>
                 <div class="mt-2 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden h-[70vh]">
-                    <iframe src="{{ url('/') }}" class="w-full h-full" style="border: 0"></iframe>
+                    <iframe x-ref="previewFrame" src="{{ url('/') }}" class="w-full h-full" style="border: 0"></iframe>
                 </div>
             </div>
         </div>

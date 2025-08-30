@@ -39,6 +39,7 @@ class HomePageBuilder extends Page implements HasForms
 
     public ?array $data = [];
     public ?array $previewData = [];
+    public string $activeTab = 'settings';
 
     public function mount(): void
     {
@@ -855,6 +856,8 @@ class HomePageBuilder extends Page implements HasForms
                 }
             }
         }
+
+        $this->dispatch('hpb-preview-reload');
 
         Notification::make()
             ->title('Homepage configuration saved successfully')
