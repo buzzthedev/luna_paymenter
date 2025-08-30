@@ -21,7 +21,7 @@
 @switch($variation)
     @case('1')
         {{-- accordion-list --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Frequently Asked Questions') }}</h2>
@@ -65,7 +65,7 @@
 
     @case('2')
         {{-- 2-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Got Questions?') }}</h2>
@@ -111,7 +111,7 @@
 
     @case('3')
         {{-- categorized-questions --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Common Questions') }}</h2>
@@ -175,7 +175,7 @@
 
     @case('4')
         {{-- 3-column-cards --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Need Help?') }}</h2>
@@ -210,7 +210,7 @@
 
     @case('5')
         {{-- 2-column-accordion --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Frequently Asked Questions') }}</h2>
@@ -264,7 +264,7 @@
 
     @case('6')
         {{-- categorized-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Questions & Answers') }}</h2>

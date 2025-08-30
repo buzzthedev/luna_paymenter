@@ -22,7 +22,7 @@
 @switch($variation)
     @case('1')
         {{-- centered-hero --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="relative z-10 container mx-auto px-4 py-20 text-center">
                 <h1 
                     class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"
@@ -56,7 +56,7 @@
         @break
     @case('2')
         {{-- deploy-scale-hero --}}
-        <section class="min-h-screen flex items-center justify-center px-4">
+        <section class="py-20 flex items-center justify-center px-4">
             <div class="max-w-4xl mx-auto text-center space-y-8">
                 <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white">{{ data_get($data, 'content.title', 'Deploy with confidence.') }}<span class="block text-blue-600 dark:text-blue-400">{{ data_get($data, 'content.subtitle_strong', 'Scale without limits.') }}</span></h1>
                 <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200">{{ data_get($data, 'content.subtitle', 'Enterprise infrastructure that grows with your business. From VPS to dedicated servers, we provide the performance and reliability you need.') }}</p>
@@ -75,7 +75,7 @@
         @break
     @case('3')
         {{-- infrastructure-powers-web --}}
-        <section class="flex items-center px-4">
+        <section class="py-20 flex items-center px-4">
             <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8">
                     <div class="space-y-6">
@@ -98,24 +98,29 @@
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-blue-600 dark:text-blue-400" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg" style="color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="w-full h-96 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+                    @php $img = data_get($data, 'content.image'); @endphp
+                    @if($img)
+                        <img src="{{ Storage::url($img) }}" alt="{{ data_get($data, 'content.image_alt', 'Hero image') }}" class="w-full h-96 object-cover rounded-2xl" style="border-radius: var(--hpb-card-radius);" />
+                    @else
+                        <div class="w-full h-96 bg-gray-200 dark:bg-gray-700 rounded-2xl"></div>
+                    @endif
                 </div>
             </div>
         </section>
         @break
     @case('4')
         {{-- enterprise-infrastructure --}}
-        <section class="min-h-screen flex items-center px-4">
+        <section class="py-20 flex items-center px-4">
             <div class="max-w-5xl mx-auto text-center space-y-8">
                 <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">{{ data_get($data, 'content.title', 'Enterprise-grade infrastructure') }}<span class="block text-blue-600 dark:text-blue-400">{{ data_get($data, 'content.subtitle_strong', 'for mission-critical applications') }}</span></h1>
                 <p class="text-xl leading-relaxed max-w-3xl mx-auto text-gray-700 dark:text-gray-200">{{ data_get($data, 'content.subtitle', 'Deploy with confidence using our enterprise-grade security features, compliance-ready infrastructure, and global network of data centers.') }}</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
                     <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                 </div>
                 <div class="flex items-center justify-center gap-8 pt-8 text-sm text-gray-600 dark:text-gray-400">
                     <div>SOC 2 Compliant</div>
@@ -129,7 +134,7 @@
         @break
     @case('5')
         {{-- deploy-scale-features --}}
-        <section class="min-h-screen flex items-center px-4">
+        <section class="py-20 flex items-center px-4">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-16 space-y-6">
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">Everything you need to deploy and scale</h1>
@@ -167,7 +172,7 @@
         @break
     @case('6')
         {{-- monitor-optimize-hero --}}
-        <section class="min-h-screen">
+        <section class="py-20">
             <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center min-h-screen">
                 <div class="space-y-8">
                     <div class="space-y-6">
@@ -176,7 +181,7 @@
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                     </div>
                 </div>
                 <div class="relative">
@@ -214,7 +219,7 @@
         </section>
         @break
     @default
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="relative z-10 container mx-auto px-4 py-20 text-center">
                 <h1 
                     class="text-5xl md:text-6xl font-bold mb-6 text-gray-900 dark:text-white"

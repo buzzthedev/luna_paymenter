@@ -21,7 +21,7 @@ $colorMap = [
 @switch($variation)
     @case('1')
         {{-- 3-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'What Our Customers Say') }}</h2>
@@ -60,7 +60,7 @@ $colorMap = [
 
     @case('2')
         {{-- 2-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Trusted by Thousands') }}</h2>
@@ -100,7 +100,7 @@ $colorMap = [
 
     @case('3')
         {{-- 3-column-simple --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Customer Success Stories') }}</h2>
@@ -140,7 +140,7 @@ $colorMap = [
 
     @case('4')
         {{-- alternating-layout --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Client Testimonials') }}</h2>
@@ -222,7 +222,7 @@ $colorMap = [
 
     @case('5')
         {{-- 4-column-compact --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Customer Reviews') }}</h2>
@@ -327,7 +327,7 @@ $colorMap = [
         @break
 
     @default
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4 text-center py-16">
                 <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-8">Reviews Section</h2>
                 <p class="text-xl text-gray-700 dark:text-gray-200 mb-12">

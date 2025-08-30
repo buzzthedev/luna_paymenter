@@ -15,6 +15,7 @@ use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Slider;
+use Filament\Forms\Components\FileUpload;
 use Filament\Schemas\Components\Grid;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -334,6 +335,22 @@ class HomePageBuilder extends Page implements HasForms
                                             TextInput::make('secondary_link')
                                                 ->label('Secondary button link')
                                                 ->columnSpan(1),
+
+                                            FileUpload::make('image')
+                                                ->label('Hero image')
+                                                ->disk('public')
+                                                ->directory('homebuilder')
+                                                ->image()
+                                                ->imageEditor()
+                                                ->imageResizeMode('contain')
+                                                ->imageResizeTargetWidth('1920')
+                                                ->imageResizeTargetHeight('1080')
+                                                ->visible(fn ($get) => in_array($get('../../variation'), ['3']))
+                                                ->columnSpanFull(),
+                                            TextInput::make('image_alt')
+                                                ->label('Hero image alt')
+                                                ->visible(fn ($get) => in_array($get('../../variation'), ['3']))
+                                                ->columnSpanFull(),
 
                                             Repeater::make('badges')
                                                 ->label('Badges / Highlights')

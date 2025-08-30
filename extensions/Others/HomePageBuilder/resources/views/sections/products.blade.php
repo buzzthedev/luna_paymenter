@@ -23,7 +23,7 @@ $colorMap = [
 @switch($variation)
     @case('1')
         {{-- 3-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">
@@ -100,7 +100,7 @@ $colorMap = [
 
     @case('2')
         {{-- featured-products --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">
@@ -177,7 +177,7 @@ $colorMap = [
 
     @case('3')
         {{-- premium-products --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">
@@ -252,7 +252,7 @@ $colorMap = [
 
     @case('4')
         {{-- product-showcase --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">
@@ -324,7 +324,7 @@ $colorMap = [
 
     @case('5')
         {{-- product-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">

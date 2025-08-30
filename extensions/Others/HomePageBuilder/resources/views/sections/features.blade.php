@@ -21,7 +21,7 @@
 @switch($variation)
     @case('1')
         {{-- 3-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Everything You Need') }}</h2>
@@ -54,7 +54,7 @@
 
     @case('2')
         {{-- 2-column-grid --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Why Choose Us?') }}</h2>
@@ -110,7 +110,7 @@
 
     @case('3')
         {{-- core-features --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Core Features') }}</h2>
@@ -156,7 +156,7 @@
 
     @case('4')
         {{-- enterprise-solutions --}}
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Enterprise Solutions') }}</h2>

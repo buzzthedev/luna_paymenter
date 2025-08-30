@@ -20,7 +20,7 @@ $colorMap = [
 
 @switch($variation)
     @case('1')
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Pricing') }}</h2>
@@ -52,7 +52,7 @@ $colorMap = [
         @break
 
     @case('2')
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Pricing') }}</h2>
@@ -84,7 +84,7 @@ $colorMap = [
         @break
 
     @case('3')
-        <section class="pb-20 relative">
+        <section class="py-20 relative">
             <div class="container mx-auto max-w-[1320px] px-4">
                 <div class="text-center space-y-4 mb-8 py-16">
                     <h2 class="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white">{{ data_get($data, 'content.section_title', 'Pricing') }}</h2>
