@@ -14,6 +14,7 @@ $colorMap = [
     'neutral' => 'var(--hpb-color-neutral)',
     'bg-background' => 'var(--hpb-color-bg-background)',
     'color-background' => 'var(--hpb-color-color-background)',
+    
 ];
 @endphp
 
@@ -29,8 +30,8 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-200 hover:shadow-lg  home-page-builder__card card-gradient">
-                            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
+                        <div class="border-1 rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-200 hover:shadow-lg  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
+                            <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
                                 <i class="fa-solid {{ ['fa-rocket','fa-bolt','fa-building'][$idx % 3] ?? 'fa-rocket' }} text-white"></i>
                             </div>
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ data_get($plan, 'title', 'Plan') }}</h3>
@@ -41,7 +42,7 @@ $colorMap = [
                                 @endforeach
                             </ul>
                             <div class="mt-6">
-                                <a href="{{ data_get($plan, 'cta_link', '#') }}" class="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($plan, 'cta_label', 'Choose plan') }}</a>
+                                <a href="{{ data_get($plan, 'cta_link', '#') }}" class="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($plan, 'cta_label', 'Choose plan') }}</a>
                             </div>
                         </div>
                     @endforeach
@@ -61,9 +62,9 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col {{ $idx === 1 ? 'relative lg:scale-105 lg:shadow-xl' : '' }} hover:-translate-y-1 transition-transform duration-200  home-page-builder__card card-gradient">
+                        <div class="border-1rounded-2xl p-6 flex flex-col {{ $idx === 1 ? 'relative lg:scale-105 lg:shadow-xl' : '' }} hover:-translate-y-1 transition-transform duration-200  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             @if(data_get($plan, 'badge'))
-                                <span class="absolute -top-3 right-4 text-xs font-semibold px-2 py-1 rounded-full text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($plan, 'badge') }}</span>
+                                <span class="absolute -top-3 right-4 text-xs font-semibold px-2 py-1 rounded-full text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($plan, 'badge') }}</span>
                             @endif
                             <div class="text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">{{ data_get($plan, 'title', 'Plan') }}</div>
                             <div class="text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">{{ data_get($plan, 'price', '$5') }}</div>
@@ -74,7 +75,7 @@ $colorMap = [
                                     <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-500"></i>{{ data_get($f, 'text', '') }}</li>
                                 @endforeach
                             </ul>
-                            <a href="{{ data_get($plan, 'cta_link', '#') }}" class="mt-6 inline-flex items-center justify-center px-4 py-2 rounded-lg {{ $idx === 1 ? 'text-white' : '' }}" style="{{ $idx === 1 ? 'background-color: hsl(' . $colorMap['primary'] . ');' : 'border-color: hsl(' . $colorMap['primary'] . '); color: hsl(' . $colorMap['primary'] . ');' }}">{{ data_get($plan, 'cta_label', $idx === 1 ? 'Get started' : 'Get started') }}</a>
+                            <a href="{{ data_get($plan, 'cta_link', '#') }}" class="mt-6 inline-flex items-center justify-center px-4 py-2 rounded-lg {{ $idx === 1 ? 'text-white' : '' }}" style="border-radius: var(--hpb-card-radius); {{ $idx === 1 ? 'background-color: hsl(' . $colorMap['primary'] . ');' : 'border-color: hsl(' . $colorMap['primary'] . '); color: hsl(' . $colorMap['primary'] . ');' }}">{{ data_get($plan, 'cta_label', $idx === 1 ? 'Get started' : 'Get started') }}</a>
                         </div>
                     @endforeach
                 </div>
@@ -93,7 +94,7 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col  home-page-builder__card card-gradient">
+                        <div class="border-1rounded-2xl p-6 flex flex-col  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ data_get($plan, 'title', 'Plan') }}</h3>
                                 @if(data_get($plan, 'badge'))
@@ -106,7 +107,7 @@ $colorMap = [
                                     <li>{{ data_get($f, 'text', '') }}</li>
                                 @endforeach
                             </ul>
-                            <a href="{{ data_get($plan, 'cta_link', '#') }}" class="mt-6 inline-flex items-center justify-center px-4 py-2 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($plan, 'cta_label', 'Select') }}</a>
+                            <a href="{{ data_get($plan, 'cta_link', '#') }}" class="mt-6 inline-flex items-center justify-center px-4 py-2 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($plan, 'cta_label', 'Select') }}</a>
                         </div>
                     @endforeach
                 </div>

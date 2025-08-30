@@ -31,7 +31,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 3); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             <div class="flex items-center mb-6">
                                 <div class="flex text-yellow-400">
                                     <i class="fa-solid fa-star"></i>
@@ -70,7 +70,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-2 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 2); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             <div class="flex items-center mb-4">
                                 <div class="flex text-yellow-400 mr-4">
                                     <i class="fa-solid fa-star"></i>
@@ -110,7 +110,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-3 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 3); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             <div class="flex items-center mb-6">
                                 <div class="flex text-yellow-400 mr-4">
                                     <i class="fa-solid fa-star"></i>
@@ -152,7 +152,7 @@ $colorMap = [
                         @php $r0 = data_get($data, 'content.reviews.0'); @endphp
                         @if ($r0)
                             <div class="lg:w-1/2">
-                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                     <div class="flex items-center mb-6">
                                         <div class="flex text-yellow-400 mr-4">
                                             <i class="fa-solid fa-star"></i>
@@ -186,7 +186,7 @@ $colorMap = [
                         @php $r1 = data_get($data, 'content.reviews.1'); @endphp
                         @if ($r1)
                             <div class="lg:w-1/2">
-                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                     <div class="flex items-center mb-6">
                                         <div class="flex text-yellow-400 mr-4">
                                             <i class="fa-solid fa-star"></i>
@@ -230,7 +230,7 @@ $colorMap = [
                 </div>
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -248,7 +248,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.0.title', 'Startup Founder') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -266,7 +266,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.1.title', 'Web Developer') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -284,7 +284,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.2.title', 'Business Owner') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient" style="border-radius: {{ (isset($colors) && is_array($colors) && array_key_exists('card_radius', $colors)) ? (int) $colors['card_radius'] : 12 }}px; box-shadow: {{ (isset($colors) && is_array($colors) && array_key_exists('card_shadow', $colors)) ? $colors['card_shadow'] : '0 4px 12px rgba(0,0,0,0.08)' }};">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>

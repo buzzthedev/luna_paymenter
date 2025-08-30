@@ -43,7 +43,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 h-fit">
                         @foreach($data['products']->take(6) as $product)
-                            <div class="flex flex-col border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
+                            <div class="flex flex-col border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="relative w-full aspect-[4/2] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -52,7 +52,7 @@ $colorMap = [
                                     @endphp
                                     <a href="{{ $productLink }}" wire:navigate class="absolute inset-0 z-10"></a>
                                     @if($product->image)
-                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" />
+                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" style="border-radius: var(--hpb-card-radius);" />
                                     @else
                                         <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 text-3xl">
                                             <i class="fa-solid fa-image text-4xl"></i>
@@ -72,12 +72,12 @@ $colorMap = [
                                     <div class="flex items-center justify-between mt-auto pt-4">
                                         <span class="text-xl font-bold" style="color: hsl({{ $colorMap['primary'] }});">{{ $product->price() }}</span>
                                         @if (($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false))
-                                            <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate>
-                                                <x-button.primary size="md">{{ __('product.add_to_cart') }}</x-button.primary>
+                                            <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                {{ __('product.add_to_cart') }}
                                             </a>
                                         @else
-                                            <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate>
-                                                <x-button.primary size="md">{{ __('general.view') }}</x-button.primary>
+                                            <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                {{ __('general.view') }}
                                             </a>
                                         @endif
                                     </div>
@@ -118,7 +118,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="space-y-8">
                         @foreach($data['products']->take(4) as $product)
-                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
+                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                         @php
@@ -128,7 +128,7 @@ $colorMap = [
                                         @endphp
                                         <a href="{{ $productLink }}" wire:navigate class="absolute inset-0 z-10"></a>
                                         @if($product->image)
-                                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" />
+                                            <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" style="border-radius: var(--hpb-card-radius);" />
                                         @else
                                             <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 text-3xl">
                                                 <i class="fa-solid fa-image text-4xl"></i>
@@ -148,12 +148,12 @@ $colorMap = [
                                         <div class="flex items-center justify-between mt-auto pt-4">
                                             <span class="text-2xl font-bold" style="color: hsl({{ $colorMap['primary'] }});">{{ $product->price() }}</span>
                                             @if (($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false))
-                                                <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate>
-                                                    <x-button.primary size="md">{{ __('product.add_to_cart') }}</x-button.primary>
+                                                <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                    {{ __('product.add_to_cart') }}
                                                 </a>
                                             @else
-                                                <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate>
-                                                    <x-button.primary size="md">{{ __('general.view') }}</x-button.primary>
+                                                <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                    {{ __('general.view') }}
                                                 </a>
                                             @endif
                                         </div>
@@ -195,7 +195,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid lg:grid-cols-2 gap-12">
                         @foreach($data['products']->take(6) as $product)
-                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
+                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="relative aspect-[16/9] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -204,7 +204,7 @@ $colorMap = [
                                     @endphp
                                     <a href="{{ $productLink }}" wire:navigate class="absolute inset-0 z-10"></a>
                                     @if($product->image)
-                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" />
+                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="absolute inset-0 w-full h-full object-cover object-center" style="border-radius: var(--hpb-card-radius);" />
                                     @else
                                         <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500 text-3xl">
                                             <i class="fa-solid fa-image text-4xl"></i>
@@ -224,12 +224,12 @@ $colorMap = [
                                     <div class="flex items-center justify-between">
                                         <span class="text-2xl font-bold" style="color: hsl({{ $colorMap['primary'] }});">{{ $product->price() }}</span>
                                         @if (($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false))
-                                            <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate>
-                                                <x-button.primary size="md">{{ __('product.add_to_cart') }}</x-button.primary>
+                                            <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                {{ __('product.add_to_cart') }}
                                             </a>
                                         @else
-                                            <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate>
-                                                <x-button.primary size="md">{{ __('general.view') }}</x-button.primary>
+                                            <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
+                                                {{ __('general.view') }}
                                             </a>
                                         @endif
                                     </div>
@@ -270,7 +270,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach($data['products']->take(8) as $product)
-                            <div class="text-center border-1rounded-2xl p-6 group  home-page-builder__card card-gradient">
+                            <div class="text-center border-1 rounded-2xl p-6 overflow-hidden group  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="relative w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -279,7 +279,7 @@ $colorMap = [
                                     @endphp
                                     <a href="{{ $productLink }}" wire:navigate class="absolute inset-0 z-10"></a>
                                     @if($product->image)
-                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center rounded-full" />
+                                        <img src="{{ Storage::url($product->image) }}" alt="{{ $product->name }}" class="w-full h-full object-cover object-center rounded-full" style="border-radius: var(--hpb-card-radius);" />
                                     @else
                                         <div class="w-full h-full flex items-center justify-center text-gray-400 dark:text-gray-500">
                                             <i class="fa-solid fa-image text-2xl"></i>
@@ -299,11 +299,11 @@ $colorMap = [
                                 
                                 @if (($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false))
                                     <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate class="w-full">
-                                        <x-button.primary size="sm" class="w-full">{{ __('product.add_to_cart') }}</x-button.primary>
+                                        <x-button.primary size="sm" class="w-full" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ __('product.add_to_cart') }}</x-button.primary>
                                     </a>
                                 @else
                                     <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate class="w-full">
-                                        <x-button.primary size="sm" class="w-full">{{ __('general.view') }}</x-button.primary>
+                                        <x-button.primary size="sm" class="w-full" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ __('general.view') }}</x-button.primary>
                                     </a>
                                 @endif
                             </div>
@@ -342,8 +342,8 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         @foreach($data['products']->take(12) as $product)
-                            <div class="group  home-page-builder__card card-gradient">
-                                <div class="relative aspect-square bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4" style="border: 1px solid hsl({{ $colorMap['text-secondary'] }});">
+                            <div class="overflow-hidden group home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
+                                <div class="relative aspect-square bg-gray-100 dark:bg-gray-700 overflow-hidden mb-4" style="border: 1px solid hsl({{ $colorMap['text-secondary'] }});">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
                                             ? route('products.checkout', ['category' => $data['category'], 'product' => $product->slug])
@@ -384,12 +384,10 @@ $colorMap = [
                                     
                                     @if (($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false))
                                         <a href="{{ route('products.checkout', ['category' => $data['category'], 'product' => $product->slug]) }}" wire:navigate>
-                                            <x-button.primary size="sm">{{ __('product.add_to_cart') }}</x-button.primary>
+                                            <x-button.primary size="sm" class="mb-4 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ __('product.add_to_cart') }}</x-button.primary>
                                         </a>
                                     @else
-                                        <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate>
-                                            <x-button.primary size="sm">{{ __('general.view') }}</x-button.primary>
-                                        </a>
+                                         <a href="{{ route('products.show', ['category' => $product->category, 'product' => $product->slug]) }}" wire:navigate class="mb-4 inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ __('general.view') }}</a>
                                     @endif
                                 </div>
                             </div>

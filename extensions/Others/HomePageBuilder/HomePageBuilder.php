@@ -234,6 +234,18 @@ class HomePageBuilder extends Extension
             }
         }
         
+        $cardRadius = $this->config('card_radius');
+        if ($cardRadius === null || $cardRadius === '') {
+            $cardRadius = 12;
+        }
+        $colors['card_radius'] = $cardRadius;
+
+        $cardShadow = $this->config('card_shadow');
+        if ($cardShadow === null || $cardShadow === '') {
+            $cardShadow = '0 4px 12px rgba(0,0,0,0.08)';
+        }
+        $colors['card_shadow'] = $cardShadow;
+
         return $colors;
     }
 
@@ -282,6 +294,15 @@ class HomePageBuilder extends Extension
                 $darkVars[] = "--hpb-color-{$key}: " . $normalize($value) . ";";
             }
         }
+
+        $cardRadius = $data['card_radius'] ?? 12;
+        if (!is_numeric($cardRadius)) {
+            $cardRadius = 12;
+        }
+        $cardShadow = trim((string)($data['card_shadow'] ?? '0 4px 12px rgba(0,0,0,0.08)'));
+
+        $rootVars[] = "--hpb-card-radius: " . ((int) $cardRadius) . "px;";
+        $rootVars[] = "--hpb-card-shadow: " . $cardShadow . ";";
 
         $root = ':root { ' . implode(' ', $rootVars) . ' }';
         $dark = '.dark { ' . implode(' ', $darkVars) . ' }';

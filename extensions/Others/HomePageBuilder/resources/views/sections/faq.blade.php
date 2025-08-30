@@ -31,7 +31,7 @@
                 <div class="max-w-4xl mx-auto space-y-6">
                     @php $items = data_get($data, 'content.items', []); @endphp
                     @foreach ($items as $item)
-                        <div class="border-1 rounded-3xl  home-page-builder__card card-gradient">
+                        <div class="border-1 rounded-3xl  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                             <button class="w-full px-8 py-6 text-left focus:outline-none" onclick="toggleFAQ(this)">
                                 <div class="flex items-center justify-between">
                                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ data_get($item, 'question', '') }}</h3>
@@ -75,9 +75,9 @@
                 <div class="grid lg:grid-cols-2 gap-12">
                     <div class="space-y-6">
                         @foreach (array_slice(data_get($data, 'content.items', []), 0, 3) as $item)
-                            <div class="border-1 rounded-3xl p-6  home-page-builder__card card-gradient">
+                            <div class="border-1 rounded-3xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="flex items-start space-x-4">
-                                    <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }});">
+                                    <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
                                         <i class="fa-solid fa-question text-white text-lg"></i>
                                     </div>
                                     <div>
@@ -91,9 +91,9 @@
 
                     <div class="space-y-6">
                         @foreach (array_slice(data_get($data, 'content.items', []), 3, 3) as $item)
-                            <div class="border-1 rounded-3xl p-6  home-page-builder__card card-gradient">
+                            <div class="border-1 rounded-3xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="flex items-start space-x-4">
-                                    <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }});">
+                                    <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
                                         <i class="fa-solid fa-question text-white text-lg"></i>
                                     </div>
                                     <div>
@@ -128,9 +128,9 @@
                         @endphp
                         <div class="space-y-6">
                             @foreach ($leftGroups as $group)
-                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                     <div class="flex items-center space-x-4 mb-4">
-                                        <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }});">
+                                        <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
                                             <i class="fa-solid fa-rocket text-white text-lg"></i>
                                         </div>
                                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ data_get($group, 'title', '') }}</h3>
@@ -149,9 +149,9 @@
 
                         <div class="space-y-6">
                             @foreach ($rightGroups as $group)
-                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                     <div class="flex items-center space-x-4 mb-4">
-                                        <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }});">
+                                        <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">
                                             <i class="fa-solid fa-cog text-white text-lg"></i>
                                         </div>
                                         <h3 class="text-xl font-bold text-gray-900 dark:text-white">{{ data_get($group, 'title', '') }}</h3>
@@ -185,7 +185,7 @@
                 <div class="max-w-6xl mx-auto">
                     <div class="grid md:grid-cols-3 gap-8">
                         @foreach (data_get($data, 'content.groups', []) as $group)
-                            <div class="border-1rounded-2xl p-6  home-page-builder__card card-gradient">
+                            <div class="border-1rounded-2xl p-6  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                 <div class="text-center mb-6">
                                     <div class="inline-flex items-center justify-center rounded-full p-4 w-16 h-16 mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                                         <i class="fa-solid fa-server text-white text-2xl"></i>
@@ -281,7 +281,7 @@
                         @endphp
                         <div class="space-y-6">
                             @foreach ($leftGroups as $group)
-                                <div class="border-1 home-page-builder__card card-gradient rounded-3xl p-6">
+                                <div class="border-1 home-page-builder__card card-gradient rounded-3xl p-6" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                     <div class="flex items-center space-x-4 mb-4">
                                         <div class="flex items-center justify-center rounded-2xl p-3 w-12 h-12" style="background-color: hsl({{ $colorMap['primary'] }});">
                                             <i class="fa-solid fa-rocket text-white text-lg"></i>
@@ -311,7 +311,7 @@
                                     </div>
                                     <div class="space-y-3">
                                         @foreach (data_get($group, 'items', []) as $item)
-                                            <div class="rounded-lg p-3 home-page-builder__card card-gradient">
+                                            <div class="rounded-lg p-3 home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                                                 <h4 class="font-semibold text-gray-800 dark:text-gray-200 text-sm mb-1">{{ data_get($item, 'question', '') }}</h4>
                                                 <p class="text-gray-700 dark:text-gray-300 text-xs">{{ data_get($item, 'answer', '') }}</p>
                                             </div>

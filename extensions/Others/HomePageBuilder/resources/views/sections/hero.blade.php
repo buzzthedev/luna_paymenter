@@ -61,8 +61,8 @@
                 <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 dark:text-white">{{ data_get($data, 'content.title', 'Deploy with confidence.') }}<span class="block text-blue-600 dark:text-blue-400">{{ data_get($data, 'content.subtitle_strong', 'Scale without limits.') }}</span></h1>
                 <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200">{{ data_get($data, 'content.subtitle', 'Enterprise infrastructure that grows with your business. From VPS to dedicated servers, we provide the performance and reliability you need.') }}</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center text-lg px-8 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($data, 'content.primary_label', 'View Plans') }} <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"/></svg></a>
-                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center text-lg px-8 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600"><svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                    <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center text-lg px-8 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }} <svg class="ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12l-7.5 7.5M21 12H3"/></svg></a>
+                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center text-lg px-8 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="border-radius: var(--hpb-card-radius);"><svg class="mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                 </div>
                 <div class="flex items-center justify-center gap-8 pt-8 opacity-60 text-gray-600 dark:text-gray-400">
                     <div class="text-sm font-medium">99.9% Uptime</div>
@@ -75,7 +75,7 @@
         @break
     @case('3')
         {{-- infrastructure-powers-web --}}
-        <section class="min-h-screen flex items-center px-4">
+        <section class="flex items-center px-4">
             <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div class="space-y-8">
                     <div class="space-y-6">
@@ -97,8 +97,8 @@
                         </div>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-blue-600 dark:text-blue-400">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                        <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
+                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-blue-600 dark:text-blue-400" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                     </div>
                 </div>
                 <div class="relative">
@@ -114,8 +114,8 @@
                 <h1 class="text-5xl md:text-6xl font-bold leading-tight text-gray-900 dark:text-white">{{ data_get($data, 'content.title', 'Enterprise-grade infrastructure') }}<span class="block text-blue-600 dark:text-blue-400">{{ data_get($data, 'content.subtitle_strong', 'for mission-critical applications') }}</span></h1>
                 <p class="text-xl leading-relaxed max-w-3xl mx-auto text-gray-700 dark:text-gray-200">{{ data_get($data, 'content.subtitle', 'Deploy with confidence using our enterprise-grade security features, compliance-ready infrastructure, and global network of data centers.') }}</p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                    <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
+                    <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                 </div>
                 <div class="flex items-center justify-center gap-8 pt-8 text-sm text-gray-600 dark:text-gray-400">
                     <div>SOC 2 Compliant</div>
@@ -136,21 +136,21 @@
                     <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200">From VPS to dedicated servers, colocation to managed hosting - we provide the infrastructure and tools your team needs to succeed.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6 mb-12">
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Instant Deployment</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Deploy VPS instances in under 60 seconds with our automated provisioning system.</p>
                     </div>
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m-4-4h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Enterprise Security</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Bank-level security with advanced DDoS protection, firewalls, and 24/7 monitoring.</p>
                     </div>
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2M7 8H5a2 2 0 00-2 2v6a2 2 0 002 2h2m10-10V6a2 2 0 00-2-2H9a2 2 0 00-2 2v2m10 0H7"/></svg>
                         </div>
@@ -159,7 +159,7 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <a href="#" class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-white text-lg" style="background-color: hsl({{ $colorMap['primary'] }});">View Plans</a>
+                    <a href="#" class="inline-flex items-center justify-center px-8 py-3 rounded-lg text-white text-lg" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">View Plans</a>
                     <p class="text-sm mt-3 text-gray-600 dark:text-gray-300">No credit card required</p>
                 </div>
             </div>
@@ -175,12 +175,12 @@
                         <p class="text-lg leading-relaxed text-gray-700 dark:text-gray-200">{{ data_get($data, 'content.subtitle', 'Real-time server monitoring, performance analytics, and automated optimization tools that help you deliver exceptional user experiences.') }}</p>
                     </div>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
-                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
+                        <a href="{{ data_get($data, 'content.primary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-white font-semibold" style="background-color: hsl({{ $colorMap['primary'] }}); border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.primary_label', 'View Plans') }}</a>
+                        <a href="{{ data_get($data, 'content.secondary_link', '#') }}" class="inline-flex items-center justify-center px-6 py-3 rounded-lg border-1 bg-transparent text-gray-700 dark:text-gray-200 border-gray-300 dark:border-gray-600" style="border-radius: var(--hpb-card-radius);">{{ data_get($data, 'content.secondary_label', 'Read me') }}</a>
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="rounded-2xl p-6 bg-white dark:bg-gray-800 borderdark:border-gray-700  home-page-builder__card card-gradient">
+                    <div class="rounded-2xl p-6 bg-white dark:bg-gray-800 borderdark:border-gray-700  home-page-builder__card card-gradient" style="border-radius: var(--hpb-card-radius); box-shadow: var(--hpb-card-shadow);">
                         <div class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-semibold text-gray-900 dark:text-white">Live Performance</h3>

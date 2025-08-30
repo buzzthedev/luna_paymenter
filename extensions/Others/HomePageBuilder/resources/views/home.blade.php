@@ -3,16 +3,16 @@
         .home-page-builder__card {
             background: hsl(var(--hpb-color-background-secondary)) !important;
             border: 1px solid hsl(var(--hpb-color-neutral));
-            box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
-            border-radius: 20px;
+            box-shadow: var(--hpb-card-shadow);
+            border-radius: var(--hpb-card-radius);
         }
 
         @prefers-color-scheme: dark {
             .home-page-builder__card {
                 background: hsl(var(--hpb-color-background-secondary)) !important;
                 border: 1px solid hsl(var(--hpb-color-neutral));
-                box-shadow: 0 6px 10px rgba(0, 0, 0, .1);
-                border-radius: 20px;
+                box-shadow: var(--hpb-card-shadow);
+                border-radius: var(--hpb-card-radius);
             }
         }
     </style>

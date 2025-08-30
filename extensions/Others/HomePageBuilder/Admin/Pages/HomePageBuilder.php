@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Slider;
 use Filament\Schemas\Components\Grid;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -53,10 +54,7 @@ class HomePageBuilder extends Page implements HasForms
 
     public function getViewData(): array
     {
-        return [
-            'homebuilderView' => $this->activeTab === 'preview' ? $this->generatePreviewHtml() : null,
-            'colors' => $this->form->getState()
-        ];
+        return [];
     }
 
    protected function getFormSchema(): array
@@ -204,6 +202,20 @@ class HomePageBuilder extends Page implements HasForms
                                 ->default('hsl(217, 33%, 16%)'),
                         ])
                         ->columns(2),
+                    
+                    Section::make('General Theme Settings')
+                        ->schema([
+                            TextInput::make('card_radius')
+                                ->label('Card Border Radius')
+                                ->placeholder('12')
+                                ->default('12')
+                                ->default(12),
+                            TextInput::make('card_shadow')
+                                ->label('Card Shadow (CSS)')
+                                ->placeholder('0 4px 12px rgba(0,0,0,0.08)')
+                                ->default('0 4px 12px rgba(0,0,0,0.08)'),
+                        ])
+                        ->columns(2),
                 ]),
             
             Section::make('Page Sections')
@@ -215,6 +227,7 @@ class HomePageBuilder extends Page implements HasForms
                                 ->default([
                                     'hero_data' => [],
                                     'features_data' => [],
+                                    'products_data' => [],
                                     'reviews_data' => ['reviews' => []],
                                     'pricing_data' => ['items' => []],
                                     'faq_data' => ['items' => [], 'groups' => []],
@@ -255,7 +268,12 @@ class HomePageBuilder extends Page implements HasForms
                                                 'items' => [],
                                             ],
                                         ],
-                                        'products' => [],
+                                        'products' => [
+                                            'products_data' => [
+                                                'section_title' => null,
+                                                'section_description' => null,
+                                            ],
+                                        ],
                                         'faq' => [
                                             'faq_data' => [
                                                 'section_title' => null,
@@ -296,6 +314,13 @@ class HomePageBuilder extends Page implements HasForms
                                             Textarea::make('subtitle')
                                                 ->label('Subtitle / Description')
                                                 ->rows(3)
+                                                ->columnSpan(1),
+                                            TextInput::make('subtitle_strong')
+                                                ->label('Subtitle strong')
+                                                ->placeholder('Scale without limits.')
+                                                ->visible(fn ($get) => in_array($get('../../variation'), ['2','3','4','6']))
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
                                                 ->columnSpan(1),
                                             TextInput::make('primary_label')
                                                 ->label('Primary button label')
@@ -352,18 +377,23 @@ class HomePageBuilder extends Page implements HasForms
                                             TextInput::make('section_title')
                                                 ->label('Section title')
                                                 ->placeholder('Everything You Need')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
                                                 ->columnSpan(1),
                                             Textarea::make('section_description')
                                                 ->label('Section description')
                                                 ->rows(3)
                                                 ->placeholder('Powerful features designed to help your business succeed online')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
                                                 ->columnSpan(1),
 
                                             Repeater::make('items')
                                                 ->label('Feature items (title & description)')
+                                                ->reorderable()
                                                 ->schema([
-                                                    TextInput::make('title')->label('Title')->required(),
-                                                    Textarea::make('description')->label('Description')->rows(2)->required(),
+                                                    TextInput::make('title')->label('Title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                    Textarea::make('description')->label('Description')->rows(2)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
                                                 ])
                                                 ->default([
                                                     ['title' => 'Blazing Fast', 'description' => 'Experience top-tier speed and performance for all your sites with our optimized infrastructure.'],
@@ -373,6 +403,8 @@ class HomePageBuilder extends Page implements HasForms
                                                     ['title' => '24/7 Support', 'description' => 'Our expert team is always available to help you succeed with round-the-clock support.'],
                                                     ['title' => 'Cloud Backups', 'description' => 'Daily automated backups ensure your data is always safe and recoverable.'],
                                                 ])
+                                                ->collapsed()
+                                                ->collapsible()
                                                 ->visible(fn ($get) => in_array($get('../../variation'), ['1','2','5']))
                                                 ->columnSpanFull(),
 
@@ -381,8 +413,8 @@ class HomePageBuilder extends Page implements HasForms
                                                     Repeater::make('items_main')
                                                         ->label('Main features (4)')
                                                         ->schema([
-                                                            TextInput::make('title')->label('Title')->required(),
-                                                            Textarea::make('description')->label('Description')->rows(2)->required(),
+                                                            TextInput::make('title')->label('Title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            Textarea::make('description')->label('Description')->rows(2)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
                                                         ])
                                                         ->default([
                                                             ['title' => 'High Performance', 'description' => 'SSD storage and optimized servers for lightning-fast loading times.'],
@@ -390,18 +422,22 @@ class HomePageBuilder extends Page implements HasForms
                                                             ['title' => 'Global Network', 'description' => 'Data centers worldwide with CDN for optimal global performance.'],
                                                             ['title' => '24/7 Support', 'description' => 'Expert technical support available around the clock.'],
                                                         ])
+                                                        ->collapsed()
+                                                        ->collapsible()
                                                         ->columnSpanFull(),
                                                     Repeater::make('items_sub')
                                                         ->label('Additional features (3)')
                                                         ->schema([
-                                                            TextInput::make('title')->label('Title')->required(),
-                                                            Textarea::make('description')->label('Description')->rows(2)->required(),
+                                                            TextInput::make('title')->label('Title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            Textarea::make('description')->label('Description')->rows(2)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
                                                         ])
                                                         ->default([
                                                             ['title' => 'Automated Backups', 'description' => 'Daily backups with instant restore capabilities.'],
                                                             ['title' => 'Quick Setup', 'description' => 'Get your server running in under 60 seconds.'],
                                                             ['title' => 'Real-time Monitoring', 'description' => 'Track performance and uptime in real-time.'],
                                                         ])
+                                                        ->collapsed()
+                                                        ->collapsible()
                                                         ->columnSpanFull(),
                                                 ])
                                                 ->visible(fn ($get) => $get('../../variation') === '3')
@@ -412,27 +448,31 @@ class HomePageBuilder extends Page implements HasForms
                                                     Repeater::make('items_left')
                                                         ->label('Left column items (3)')
                                                         ->schema([
-                                                            TextInput::make('title')->label('Title')->required(),
-                                                            Textarea::make('description')->label('Description')->rows(2)->required(),
+                                                            TextInput::make('title')->label('Title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            Textarea::make('description')->label('Description')->rows(2)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
                                                         ])
                                                         ->default([
                                                             ['title' => 'Scalable Infrastructure', 'description' => 'Grow your resources on-demand with our flexible cloud infrastructure that scales with your business needs.'],
                                                             ['title' => 'Advanced Security', 'description' => 'Multi-layer security including firewall rules, intrusion detection, and compliance-ready infrastructure.'],
                                                             ['title' => '99.99% Uptime SLA', 'description' => 'Enterprise-grade reliability with guaranteed uptime and compensation for any downtime.'],
                                                         ])
+                                                        ->collapsed()
+                                                        ->collapsible()
                                                         ->columnSpanFull(),
                                                     Repeater::make('metrics')
                                                         ->label('Right column metrics (3)')
                                                         ->schema([
-                                                            TextInput::make('title')->label('Title')->required(),
-                                                            TextInput::make('value')->label('Value')->required(),
-                                                            Textarea::make('description')->label('Description')->rows(2)->required(),
+                                                            TextInput::make('title')->label('Title')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            TextInput::make('value')->label('Value')->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
+                                                            Textarea::make('description')->label('Description')->rows(2)->required()->live(onBlur: true)->partiallyRenderAfterStateUpdated(),
                                                         ])
                                                         ->default([
                                                             ['title' => 'Performance Metrics', 'value' => '99.9%', 'description' => 'Average response time across all servers'],
                                                             ['title' => 'Global Coverage', 'value' => '15+', 'description' => 'Data centers across multiple continents'],
                                                             ['title' => 'Support Response', 'value' => '5min', 'description' => 'Average response time for urgent issues'],
                                                         ])
+                                                        ->collapsed()
+                                                        ->collapsible()
                                                         ->columnSpanFull(),
                                                 ])
                                                 ->visible(fn ($get) => $get('../../variation') === '4')
@@ -496,7 +536,6 @@ class HomePageBuilder extends Page implements HasForms
                                             '5' => 4,
                                             default => null,
                                         })
-                                        ->reorderable(false)
                                         ->default([])
                                         ->columnSpanFull(),
 
@@ -566,7 +605,6 @@ class HomePageBuilder extends Page implements HasForms
                                                 ->collapsed()
                                                 ->collapsible()
                                                 ->maxItems(6)
-                                                ->reorderable(false)
                                                 ->default([])
                                                 ->columnSpanFull(),
                                         ])
@@ -574,6 +612,30 @@ class HomePageBuilder extends Page implements HasForms
                                 ->columns(2)
                                 ->columnSpanFull()
                                 ->hidden(fn ($get) => $get('type') !== 'pricing'),
+
+                            Fieldset::make('Products Content')
+                                ->schema([
+                                    Group::make()
+                                        ->statePath('content.products_data')
+                                        ->columns(2)
+                                        ->columnSpanFull()
+                                        ->schema([
+                                            TextInput::make('section_title')
+                                                ->label('Section title')
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+                                            Textarea::make('section_description')
+                                                ->label('Section description')
+                                                ->rows(3)
+                                                ->live(onBlur: true)
+                                                ->partiallyRenderAfterStateUpdated()
+                                                ->columnSpan(1),
+                                        ])
+                                ])
+                                ->columns(2)
+                                ->columnSpanFull()
+                                ->hidden(fn ($get) => $get('type') !== 'products'),
 
                             Fieldset::make('FAQ Content')
                                 ->schema([
@@ -603,7 +665,6 @@ class HomePageBuilder extends Page implements HasForms
                                                 ->visible(fn ($get) => in_array($get('../../variation'), ['1','2','5']))
                                                 ->collapsed()
                                                 ->collapsible()
-                                                ->reorderable(false)
                                                 ->default([])
                                                 ->columnSpanFull(),
 
@@ -621,13 +682,11 @@ class HomePageBuilder extends Page implements HasForms
                                                                 ])
                                                                 ->collapsed()
                                                                 ->collapsible()
-                                                                ->reorderable(false)
                                                                 ->default([])
                                                                 ->columnSpanFull(),
                                                         ])
                                                         ->collapsed()
                                                         ->collapsible()
-                                                        ->reorderable(false)
                                                         ->default([])
                                                         ->columnSpanFull(),
                                                 ])
@@ -778,6 +837,15 @@ class HomePageBuilder extends Page implements HasForms
             }
         }
 
+        $cardRadius = $data['card_radius'] ?? 12;
+        if (!is_numeric($cardRadius)) {
+            $cardRadius = 12;
+        }
+        $cardShadow = trim((string)($data['card_shadow'] ?? '0 4px 12px rgba(0,0,0,0.08)'));
+
+        $rootVars[] = "--hpb-card-radius: " . ((int) $cardRadius) . "px;";
+        $rootVars[] = "--hpb-card-shadow: " . $cardShadow . ";";
+
         $root = ':root { ' . implode(' ', $rootVars) . ' }';
         $dark = '.dark { ' . implode(' ', $darkVars) . ' }';
 
@@ -855,6 +923,19 @@ class HomePageBuilder extends Page implements HasForms
                     );
                 }
             }
+
+            if (array_key_exists('card_radius', $data)) {
+                $ext->settings()->updateOrCreate(
+                    ['key' => 'card_radius'],
+                    ['value' => $data['card_radius']]
+                );
+            }
+            if (array_key_exists('card_shadow', $data)) {
+                $ext->settings()->updateOrCreate(
+                    ['key' => 'card_shadow'],
+                    ['value' => $data['card_shadow']]
+                );
+            }
         }
 
         $this->dispatch('hpb-preview-reload');
@@ -875,6 +956,7 @@ class HomePageBuilder extends Page implements HasForms
         $productsCategory = '';
         $sections = [];
         $colorSettings = [];
+        $generalSettings = [];
 
         if ($ext) {
             $settings = $ext->settings->pluck('value', 'key')->toArray();
@@ -921,6 +1003,9 @@ class HomePageBuilder extends Page implements HasForms
                 }
                 $colorSettings[$colorKey] = $value;
             }
+
+            $generalSettings['card_radius'] = isset($settings['card_radius']) ? (int) $settings['card_radius'] : 12;
+            $generalSettings['card_shadow'] = $settings['card_shadow'] ?? '0 4px 12px rgba(0,0,0,0.08)';
         }
 
         if (empty($sections)) {
@@ -936,7 +1021,7 @@ class HomePageBuilder extends Page implements HasForms
         return array_merge([
             'products_category' => $productsCategory,
             'sections' => $sections,
-        ], $colorSettings);
+        ], $colorSettings, $generalSettings);
     }
     
     private function getDefaultColor(string $colorKey): string
