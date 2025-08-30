@@ -1,20 +1,20 @@
 @php
     $data = $data ?? [];
     $colorMap = [
-        'primary' => 'var(--color-primary)',
-        'primary-20' => 'var(--color-primary-20)',
-        'primary-dark' => 'var(--color-primary-dark)',
-        'secondary' => 'var(--color-secondary)',
-        'secondary-20' => 'var(--color-secondary-20)',
-        'background' => 'var(--color-background)',
-        'background-secondary' => 'var(--color-background-secondary)',
-        'text-primary' => 'var(--color-base)',
-        'text-secondary' => 'var(--color-muted)',
-        'base' => 'var(--color-base)',
-        'muted' => 'var(--color-muted)',
-        'neutral' => 'var(--color-neutral)',
-        'bg-background' => 'var(--color-bg-background)',
-        'color-background' => 'var(--color-color-background)',
+        'primary' => 'var(--hpb-color-primary)',
+        'primary-20' => 'var(--hpb-color-primary-20)',
+        'primary-dark' => 'var(--hpb-color-primary-dark)',
+        'secondary' => 'var(--hpb-color-secondary)',
+        'secondary-20' => 'var(--hpb-color-secondary-20)',
+        'background' => 'var(--hpb-color-background)',
+        'background-secondary' => 'var(--hpb-color-background-secondary)',
+        'text-primary' => 'var(--hpb-color-base)',
+        'text-secondary' => 'var(--hpb-color-muted)',
+        'base' => 'var(--hpb-color-base)',
+        'muted' => 'var(--hpb-color-muted)',
+        'neutral' => 'var(--hpb-color-neutral)',
+        'bg-background' => 'var(--hpb-color-bg-background)',
+        'color-background' => 'var(--hpb-color-color-background)',
     ];
 @endphp
 
@@ -35,7 +35,7 @@
                     @endphp
                     @foreach ($items as $index => $item)
                         @php $icon = $icons[$index % count($icons)] ?? 'fa-bolt'; @endphp
-                        <div class="border-1 rounded-3xl p-8  card-gradient">
+                        <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                             <div class="flex items-start space-x-6">
                                 <div class="flex items-center justify-center rounded-2xl p-5 w-16 h-16" style="background-color: hsl({{ $colorMap['primary'] }});">
                                     <i class="fa-solid {{ $icon }} text-white text-2xl"></i>
@@ -70,7 +70,7 @@
                         @foreach ($items as $index => $item)
                             @if ($index % 2 === 0)
                                 @php $icon = $icons[$index % count($icons)] ?? 'fa-rocket'; @endphp
-                                <div class="border-1 rounded-3xl p-8  card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                                     <div class="flex items-start space-x-6">
                                         <div class="flex items-center justify-center rounded-2xl p-5 w-16 h-16" style="background-color: hsl({{ $colorMap['primary'] }});">
                                             <i class="fa-solid {{ $icon }} text-white text-2xl"></i>
@@ -89,7 +89,7 @@
                         @foreach ($items as $index => $item)
                             @if ($index % 2 === 1)
                                 @php $icon = $icons[$index % count($icons)] ?? 'fa-rocket'; @endphp
-                                <div class="border-1 rounded-3xl p-8  card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                                     <div class="flex items-start space-x-6">
                                         <div class="flex items-center justify-center rounded-2xl p-5 w-16 h-16" style="background-color: hsl({{ $colorMap['primary'] }});">
                                             <i class="fa-solid {{ $icon }} text-white text-2xl"></i>
@@ -186,7 +186,7 @@
                     <div class="space-y-6">
                         @php $metrics = data_get($data, 'content.metrics', []); @endphp
                         @foreach ($metrics as $m)
-                            <div class="border-1rounded-2xl p-6  card-gradient">
+                            <div class="border-1rounded-2xl p-6  home-page-builder__card card-gradient">
                                 <div class="flex items-center justify-between mb-4">
                                     <h4 class="text-lg font-semibold text-gray-900 dark:text-white">{{ data_get($m, 'title', 'Metric') }}</h4>
                                     <div class="text-2xl font-bold" style="color: hsl({{ $colorMap['primary'] }});">{{ data_get($m, 'value', '-') }}</div>
@@ -216,7 +216,7 @@
                     @endphp
                     @foreach ($items as $index => $item)
                         @php $icon = $icons[$index % count($icons)] ?? 'fa-bolt'; @endphp
-                        <div class="border-1 rounded-3xl p-8  card-gradient">
+                        <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                             <div class="flex items-start space-x-6">
                                 <div class="flex items-center justify-center rounded-2xl p-5 w-16 h-16" style="background-color: hsl({{ $colorMap['primary'] }});">
                                     <i class="fa-solid {{ $icon }} text-white text-2xl"></i>

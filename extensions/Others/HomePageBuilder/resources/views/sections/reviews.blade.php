@@ -1,20 +1,20 @@
 @php
     $data = $data ?? [];
 $colorMap = [
-    'primary' => 'var(--color-primary)',
-    'primary-20' => 'var(--color-primary-20)',
-    'primary-dark' => 'var(--color-primary-dark)',
-    'secondary' => 'var(--color-secondary)',
-    'secondary-20' => 'var(--color-secondary-20)',
-    'background' => 'var(--color-background)',
-    'background-secondary' => 'var(--color-background-secondary)',
-    'text-primary' => 'var(--color-base)',
-    'text-secondary' => 'var(--color-muted)',
-    'base' => 'var(--color-base)',
-    'muted' => 'var(--color-muted)',
-    'neutral' => 'var(--color-neutral)',
-    'bg-background' => 'var(--color-bg-background)',
-    'color-background' => 'var(--color-color-background)',
+    'primary' => 'var(--hpb-color-primary)',
+    'primary-20' => 'var(--hpb-color-primary-20)',
+    'primary-dark' => 'var(--hpb-color-primary-dark)',
+    'secondary' => 'var(--hpb-color-secondary)',
+    'secondary-20' => 'var(--hpb-color-secondary-20)',
+    'background' => 'var(--hpb-color-background)',
+    'background-secondary' => 'var(--hpb-color-background-secondary)',
+    'text-primary' => 'var(--hpb-color-base)',
+    'text-secondary' => 'var(--hpb-color-muted)',
+    'base' => 'var(--hpb-color-base)',
+    'muted' => 'var(--hpb-color-muted)',
+    'neutral' => 'var(--hpb-color-neutral)',
+    'bg-background' => 'var(--hpb-color-bg-background)',
+    'color-background' => 'var(--hpb-color-color-background)',
 ];
 @endphp
 
@@ -31,7 +31,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 3); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
                             <div class="flex items-center mb-6">
                                 <div class="flex text-yellow-400">
                                     <i class="fa-solid fa-star"></i>
@@ -70,7 +70,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-2 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 2); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
                             <div class="flex items-center mb-4">
                                 <div class="flex text-yellow-400 mr-4">
                                     <i class="fa-solid fa-star"></i>
@@ -110,7 +110,7 @@ $colorMap = [
                 <div class="grid md:grid-cols-3 gap-8">
                     @php $reviews = array_slice(data_get($data, 'content.reviews', []), 0, 3); @endphp
                     @foreach ($reviews as $review)
-                        <div class="border-1 rounded-3xl p-8 card-gradient">
+                        <div class="border-1 rounded-3xl p-8 home-page-builder__card card-gradient">
                             <div class="flex items-center mb-6">
                                 <div class="flex text-yellow-400 mr-4">
                                     <i class="fa-solid fa-star"></i>
@@ -152,7 +152,7 @@ $colorMap = [
                         @php $r0 = data_get($data, 'content.reviews.0'); @endphp
                         @if ($r0)
                             <div class="lg:w-1/2">
-                                <div class="border-1 rounded-3xl p-8  card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                                     <div class="flex items-center mb-6">
                                         <div class="flex text-yellow-400 mr-4">
                                             <i class="fa-solid fa-star"></i>
@@ -186,7 +186,7 @@ $colorMap = [
                         @php $r1 = data_get($data, 'content.reviews.1'); @endphp
                         @if ($r1)
                             <div class="lg:w-1/2">
-                                <div class="border-1 rounded-3xl p-8  card-gradient">
+                                <div class="border-1 rounded-3xl p-8  home-page-builder__card card-gradient">
                                     <div class="flex items-center mb-6">
                                         <div class="flex text-yellow-400 mr-4">
                                             <i class="fa-solid fa-star"></i>
@@ -230,7 +230,7 @@ $colorMap = [
                 </div>
 
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div class="text-center border-1rounded-2xl p-6  card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -248,7 +248,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.0.title', 'Startup Founder') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -266,7 +266,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.1.title', 'Web Developer') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>
@@ -284,7 +284,7 @@ $colorMap = [
                         <p class="text-gray-600 dark:text-gray-300 text-xs">{{ data_get($data, 'content.reviews.2.title', 'Business Owner') }}</p>
                     </div>
 
-                    <div class="text-center border-1rounded-2xl p-6  card-gradient">
+                    <div class="text-center border-1rounded-2xl p-6  home-page-builder__card card-gradient">
                         <div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-xl mx-auto mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                             <i class="fa-solid fa-user"></i>
                         </div>

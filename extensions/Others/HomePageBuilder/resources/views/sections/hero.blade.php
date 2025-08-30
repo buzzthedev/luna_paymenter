@@ -2,20 +2,20 @@
 
 @php
     $colorMap = [
-        'primary' => 'var(--color-primary)',
-        'primary-20' => 'var(--color-primary-20)',
-        'primary-dark' => 'var(--color-primary-dark)',
-        'secondary' => 'var(--color-secondary)',
-        'secondary-20' => 'var(--color-secondary-20)',
-        'background' => 'var(--color-background)',
-        'background-secondary' => 'var(--color-background-secondary)',
-        'text-primary' => 'var(--color-base)',
-        'text-secondary' => 'var(--color-muted)',
-        'base' => 'var(--color-base)',
-        'muted' => 'var(--color-muted)',
-        'neutral' => 'var(--color-neutral)',
-        'bg-background' => 'var(--color-bg-background)',
-        'color-background' => 'var(--color-color-background)',
+        'primary' => 'var(--hpb-color-primary)',
+        'primary-20' => 'var(--hpb-color-primary-20)',
+        'primary-dark' => 'var(--hpb-color-primary-dark)',
+        'secondary' => 'var(--hpb-color-secondary)',
+        'secondary-20' => 'var(--hpb-color-secondary-20)',
+        'background' => 'var(--hpb-color-background)',
+        'background-secondary' => 'var(--hpb-color-background-secondary)',
+        'text-primary' => 'var(--hpb-color-base)',
+        'text-secondary' => 'var(--hpb-color-muted)',
+        'base' => 'var(--hpb-color-base)',
+        'muted' => 'var(--hpb-color-muted)',
+        'neutral' => 'var(--hpb-color-neutral)',
+        'bg-background' => 'var(--hpb-color-bg-background)',
+        'color-background' => 'var(--hpb-color-color-background)',
     ];
 @endphp
 
@@ -136,21 +136,21 @@
                     <p class="text-xl max-w-2xl mx-auto leading-relaxed text-gray-700 dark:text-gray-200">From VPS to dedicated servers, colocation to managed hosting - we provide the infrastructure and tools your team needs to succeed.</p>
                 </div>
                 <div class="grid md:grid-cols-3 gap-6 mb-12">
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Instant Deployment</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Deploy VPS instances in under 60 seconds with our automated provisioning system.</p>
                     </div>
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v8m-4-4h8M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                         </div>
                         <h3 class="text-lg font-semibold mb-2 text-gray-900 dark:text-white">Enterprise Security</h3>
                         <p class="text-sm text-gray-600 dark:text-gray-300">Bank-level security with advanced DDoS protection, firewalls, and 24/7 monitoring.</p>
                     </div>
-                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  card-gradient">
+                    <div class="rounded-xl p-6 shadow-sm border bg-white dark:bg-gray-800dark:border-gray-700  home-page-builder__card card-gradient">
                         <div class="rounded-lg w-12 h-12 flex items-center justify-center mb-4 bg-blue-50 dark:bg-blue-900/20">
                             <svg class="h-6 w-6 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2M7 8H5a2 2 0 00-2 2v6a2 2 0 002 2h2m10-10V6a2 2 0 00-2-2H9a2 2 0 00-2 2v2m10 0H7"/></svg>
                         </div>
@@ -180,7 +180,7 @@
                     </div>
                 </div>
                 <div class="relative">
-                    <div class="rounded-2xl p-6 bg-white dark:bg-gray-800 borderdark:border-gray-700  card-gradient">
+                    <div class="rounded-2xl p-6 bg-white dark:bg-gray-800 borderdark:border-gray-700  home-page-builder__card card-gradient">
                         <div class="space-y-6">
                             <div class="flex items-center justify-between">
                                 <h3 class="font-semibold text-gray-900 dark:text-white">Live Performance</h3>

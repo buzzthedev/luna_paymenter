@@ -1,19 +1,19 @@
 @php
 $colorMap = [
-    'primary' => 'var(--color-primary)',
-    'primary-20' => 'var(--color-primary-20)',
-    'primary-dark' => 'var(--color-primary-dark)',
-    'secondary' => 'var(--color-secondary)',
-    'secondary-20' => 'var(--color-secondary-20)',
-    'background' => 'var(--color-background)',
-    'background-secondary' => 'var(--color-background-secondary)',
-    'text-primary' => 'var(--color-base)',
-    'text-secondary' => 'var(--color-muted)',
-    'base' => 'var(--color-base)',
-    'muted' => 'var(--color-muted)',
-    'neutral' => 'var(--color-neutral)',
-    'bg-background' => 'var(--color-bg-background)',
-    'color-background' => 'var(--color-color-background)',
+    'primary' => 'var(--hpb-color-primary)',
+    'primary-20' => 'var(--hpb-color-primary-20)',
+    'primary-dark' => 'var(--hpb-color-primary-dark)',
+    'secondary' => 'var(--hpb-color-secondary)',
+    'secondary-20' => 'var(--hpb-color-secondary-20)',
+    'background' => 'var(--hpb-color-background)',
+    'background-secondary' => 'var(--hpb-color-background-secondary)',
+    'text-primary' => 'var(--hpb-color-base)',
+    'text-secondary' => 'var(--hpb-color-muted)',
+    'base' => 'var(--hpb-color-base)',
+    'muted' => 'var(--hpb-color-muted)',
+    'neutral' => 'var(--hpb-color-neutral)',
+    'bg-background' => 'var(--hpb-color-bg-background)',
+    'color-background' => 'var(--hpb-color-color-background)',
 ];
 @endphp
 
@@ -29,7 +29,7 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-200 hover:shadow-lg  card-gradient">
+                        <div class="border-1rounded-2xl p-6 flex flex-col hover:-translate-y-1 transition-transform duration-200 hover:shadow-lg  home-page-builder__card card-gradient">
                             <div class="w-12 h-12 rounded-full flex items-center justify-center mb-4" style="background-color: hsl({{ $colorMap['primary'] }});">
                                 <i class="fa-solid {{ ['fa-rocket','fa-bolt','fa-building'][$idx % 3] ?? 'fa-rocket' }} text-white"></i>
                             </div>
@@ -61,7 +61,7 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col {{ $idx === 1 ? 'relative lg:scale-105 lg:shadow-xl' : '' }} hover:-translate-y-1 transition-transform duration-200  card-gradient">
+                        <div class="border-1rounded-2xl p-6 flex flex-col {{ $idx === 1 ? 'relative lg:scale-105 lg:shadow-xl' : '' }} hover:-translate-y-1 transition-transform duration-200  home-page-builder__card card-gradient">
                             @if(data_get($plan, 'badge'))
                                 <span class="absolute -top-3 right-4 text-xs font-semibold px-2 py-1 rounded-full text-white" style="background-color: hsl({{ $colorMap['primary'] }});">{{ data_get($plan, 'badge') }}</span>
                             @endif
@@ -93,7 +93,7 @@ $colorMap = [
                 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php $plans = data_get($data, 'content.items', []); @endphp
                     @foreach ($plans as $idx => $plan)
-                        <div class="border-1rounded-2xl p-6 flex flex-col  card-gradient">
+                        <div class="border-1rounded-2xl p-6 flex flex-col  home-page-builder__card card-gradient">
                             <div class="flex items-center justify-between">
                                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ data_get($plan, 'title', 'Plan') }}</h3>
                                 @if(data_get($plan, 'badge'))

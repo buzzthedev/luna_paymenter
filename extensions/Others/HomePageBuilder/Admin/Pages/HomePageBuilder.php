@@ -39,7 +39,6 @@ class HomePageBuilder extends Page implements HasForms
 
     public ?array $data = [];
     public ?array $previewData = [];
-    public string $activeTab = 'settings';
 
     public function mount(): void
     {
@@ -162,7 +161,7 @@ class HomePageBuilder extends Page implements HasForms
                                 ->hsl()
                                 ->default('hsl(100, 100%, 100%)'),
                             ColorPicker::make('background-secondary')
-                                ->label('Background - Secondary Color (Light)')
+                                ->label('Background/Card Background - Secondary Color (Light)')
                                 ->hsl()
                                 ->default('hsl(0, 0%, 97%)'),
                         ])
@@ -199,7 +198,7 @@ class HomePageBuilder extends Page implements HasForms
                                 ->hsl()
                                 ->default('hsl(60, 3%, 7%)'),
                             ColorPicker::make('dark-background-secondary')
-                                ->label('Background - Secondary Color (Dark)')
+                                ->label('Background/Card Background - Secondary Color (Dark)')
                                 ->hsl()
                                 ->default('hsl(217, 33%, 16%)'),
                         ])
@@ -376,7 +375,7 @@ class HomePageBuilder extends Page implements HasForms
                                                 ->visible(fn ($get) => in_array($get('../../variation'), ['1','2','5']))
                                                 ->columnSpanFull(),
 
-                                            Fieldset::make('Core Features (Variation 3)')
+                                            Fieldset::make('Core Features')
                                                 ->schema([
                                                     Repeater::make('items_main')
                                                         ->label('Main features (4)')
@@ -407,7 +406,7 @@ class HomePageBuilder extends Page implements HasForms
                                                 ->visible(fn ($get) => $get('../../variation') === '3')
                                                 ->columns(2),
 
-                                            Fieldset::make('Enterprise Solutions (Variation 4)')
+                                            Fieldset::make('Enterprise Solutions')
                                                 ->schema([
                                                     Repeater::make('items_left')
                                                         ->label('Left column items (3)')
@@ -500,7 +499,7 @@ class HomePageBuilder extends Page implements HasForms
                                         ->default([])
                                         ->columnSpanFull(),
 
-                                    Fieldset::make('Alternating Layout Aside (Variation 4)')
+                                    Fieldset::make('Alternating Layout Aside')
                                         ->schema([
                                             TextInput::make('content.reviews_data.aside_1_title')->label('Aside 1 title'),
                                             Textarea::make('content.reviews_data.aside_1_text')->label('Aside 1 text')->rows(3),
@@ -511,7 +510,7 @@ class HomePageBuilder extends Page implements HasForms
                                         ->visible(fn ($get) => $get('variation') === '4')
                                         ->columnSpanFull(),
 
-                                    Fieldset::make('Metrics (Variation 5)')
+                                    Fieldset::make('Metrics')
                                         ->schema([
                                             TextInput::make('content.reviews_data.metrics.average_rating')->label('Average rating label'),
                                             TextInput::make('content.reviews_data.metrics.total_reviews')->label('Total reviews label'),
@@ -607,7 +606,7 @@ class HomePageBuilder extends Page implements HasForms
                                                 ->default([])
                                                 ->columnSpanFull(),
 
-                                            Fieldset::make('Categorised FAQs (Variations 3, 4, 6)')
+                                            Fieldset::make('Categorised FAQs')
                                                 ->schema([
                                                     Repeater::make('groups')
                                                         ->label('Groups')
@@ -767,14 +766,14 @@ class HomePageBuilder extends Page implements HasForms
         $rootVars = [];
         foreach ($lightMap as $key => $value) {
             if ($value !== null && $value !== '') {
-                $rootVars[] = "--color-{$key}: " . $normalize($value) . ";";
+                $rootVars[] = "--hpb-color-{$key}: " . $normalize($value) . ";";
             }
         }
 
         $darkVars = [];
         foreach ($darkMap as $key => $value) {
             if ($value !== null && $value !== '') {
-                $darkVars[] = "--color-{$key}: " . $normalize($value) . ";";
+                $darkVars[] = "--hpb-color-{$key}: " . $normalize($value) . ";";
             }
         }
 

@@ -3,20 +3,20 @@ $category = $data['category'] ?? null;
 $products = $data['products'] ?? collect();
 
 $colorMap = [
-    'primary' => 'var(--color-primary)',
-    'primary-20' => 'var(--color-primary-20)',
-    'primary-dark' => 'var(--color-primary-dark)',
-    'secondary' => 'var(--color-secondary)',
-    'secondary-20' => 'var(--color-secondary-20)',
-    'background' => 'var(--color-background)',
-    'background-secondary' => 'var(--color-background-secondary)',
-    'text-primary' => 'var(--color-base)',
-    'text-secondary' => 'var(--color-muted)',
-    'base' => 'var(--color-base)',
-    'muted' => 'var(--color-muted)',
-    'neutral' => 'var(--color-neutral)',
-    'bg-background' => 'var(--color-bg-background)',
-    'color-background' => 'var(--color-color-background)',
+    'primary' => 'var(--hpb-color-primary)',
+    'primary-20' => 'var(--hpb-color-primary-20)',
+    'primary-dark' => 'var(--hpb-color-primary-dark)',
+    'secondary' => 'var(--hpb-color-secondary)',
+    'secondary-20' => 'var(--hpb-color-secondary-20)',
+    'background' => 'var(--hpb-color-background)',
+    'background-secondary' => 'var(--hpb-color-background-secondary)',
+    'text-primary' => 'var(--hpb-color-base)',
+    'text-secondary' => 'var(--hpb-color-muted)',
+    'base' => 'var(--hpb-color-base)',
+    'muted' => 'var(--hpb-color-muted)',
+    'neutral' => 'var(--hpb-color-neutral)',
+    'bg-background' => 'var(--hpb-color-bg-background)',
+    'color-background' => 'var(--hpb-color-color-background)',
 ];
 @endphp
 
@@ -43,7 +43,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8 h-fit">
                         @foreach($data['products']->take(6) as $product)
-                            <div class="flex flex-col border-1 rounded-3xl overflow-hidden group  card-gradient">
+                            <div class="flex flex-col border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
                                 <div class="relative w-full aspect-[4/2] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -118,7 +118,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="space-y-8">
                         @foreach($data['products']->take(4) as $product)
-                            <div class="border-1 rounded-3xl overflow-hidden group  card-gradient">
+                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
                                 <div class="grid md:grid-cols-2 gap-0">
                                     <div class="relative aspect-[4/3] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                         @php
@@ -195,7 +195,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid lg:grid-cols-2 gap-12">
                         @foreach($data['products']->take(6) as $product)
-                            <div class="border-1 rounded-3xl overflow-hidden group  card-gradient">
+                            <div class="border-1 rounded-3xl overflow-hidden group  home-page-builder__card card-gradient">
                                 <div class="relative aspect-[16/9] bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -270,7 +270,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach($data['products']->take(8) as $product)
-                            <div class="text-center border-1rounded-2xl p-6 group  card-gradient">
+                            <div class="text-center border-1rounded-2xl p-6 group  home-page-builder__card card-gradient">
                                 <div class="relative w-24 h-24 mx-auto mb-4 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center overflow-hidden">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)
@@ -342,7 +342,7 @@ $colorMap = [
                 @if($data['products']->count() > 0)
                     <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                         @foreach($data['products']->take(12) as $product)
-                            <div class="group  card-gradient">
+                            <div class="group  home-page-builder__card card-gradient">
                                 <div class="relative aspect-square bg-gray-100 dark:bg-gray-700 rounded-2xl overflow-hidden mb-4" style="border: 1px solid hsl({{ $colorMap['text-secondary'] }});">
                                     @php
                                         $productLink = ($product->stock > 0 || !$product->stock) && $product->price()->available && theme('direct_checkout', false)

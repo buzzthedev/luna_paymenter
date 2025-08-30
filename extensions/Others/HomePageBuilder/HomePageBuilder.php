@@ -110,6 +110,7 @@ class HomePageBuilder extends Extension
             
             $rendered = "<style>{$cssVariables}</style>" . view('homebuilder::home', [
                 'sections' => $sections,
+                'colors' => $colorSettings,
             ])->render();
 
             $view->with('homebuilderView', new HtmlString($rendered));
@@ -204,12 +205,16 @@ class HomePageBuilder extends Extension
                 return;
             }
 
+            $colorSettings = $this->getColorSettings();
+            $cssVariables = $this->generateCssVariables($colorSettings);
+            
             $view = view('homebuilder::home', [
                 'sections' => $sections,
+                'colors' => $colorSettings,
             ]);
 
             return [
-                'view' => new HtmlString($view->render()),
+                'view' => new HtmlString("<style>{$cssVariables}</style>" . $view->render()),
             ];
         });
     }
@@ -267,14 +272,14 @@ class HomePageBuilder extends Extension
         $rootVars = [];
         foreach ($lightMap as $key => $value) {
             if ($value !== null && $value !== '') {
-                $rootVars[] = "--color-{$key}: " . $normalize($value) . ";";
+                $rootVars[] = "--hpb-color-{$key}: " . $normalize($value) . ";";
             }
         }
 
         $darkVars = [];
         foreach ($darkMap as $key => $value) {
             if ($value !== null && $value !== '') {
-                $darkVars[] = "--color-{$key}: " . $normalize($value) . ";";
+                $darkVars[] = "--hpb-color-{$key}: " . $normalize($value) . ";";
             }
         }
 
